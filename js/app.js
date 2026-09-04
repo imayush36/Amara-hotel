@@ -700,7 +700,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const listItems = document.querySelectorAll('.nearby-list-item');
     const radarNodes = document.querySelectorAll('.radar-node');
     const radarLines = document.querySelectorAll('.radar-line');
+    const locationSection = document.getElementById('location');
     if (!listItems.length || !radarNodes.length) return;
+
+    // Ordered Clockwise (360-degree continuous rotation)
+    const ROTATION_SEQUENCE = [
+      'loc-temple',       // Top (12 o'clock)
+      'loc-airport',      // Top-Right (1:30 o'clock)
+      'loc-radisson',     // Right (3 o'clock)
+      'loc-mmmut',        // Far Right (3:30 o'clock)
+      'loc-aiims',        // Bottom-Right (5 o'clock)
+      'loc-noukavihar',   // Bottom (6 o'clock)
+      'loc-nausadh',      // Bottom-Left (7:30 o'clock)
+      'loc-citymall',     // Lower-Left (8:30 o'clock)
+      'loc-bus',          // Mid-Left (9 o'clock)
+      'loc-railway'       // Top-Left (10:30 o'clock)
+    ];
+
+    let currentSeqIndex = 0;
+    let autoRotateTimer = null;
+    let resumeTimeout = null;
+    let isUserHovering = false;
 
     function activateLocation(locId) {
       if (!locId) return;
@@ -734,13 +754,56 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    function stepAutoRotation() {
+      if (isUserHovering) return;
+      currentSeqIndex = (currentSeqIndex + 1) % ROTATION_SEQUENCE.length;
+      const nextLocId = ROTATION_SEQUENCE[currentSeqIndex];
+      activateLocation(nextLocId);
+    }
+
+    function startAutoRotation() {
+      stopAutoRotation();
+      autoRotateTimer = setInterval(stepAutoRotation, 2200);
+    }
+
+    function stopAutoRotation() {
+      if (autoRotateTimer) {
+        clearInterval(autoRotateTimer);
+        autoRotateTimer = null;
+      }
+    }
+
+    function pauseForUser(locId) {
+      isUserHovering = true;
+      stopAutoRotation();
+      if (resumeTimeout) clearTimeout(resumeTimeout);
+      const foundIdx = ROTATION_SEQUENCE.indexOf(locId);
+      if (foundIdx !== -1) currentSeqIndex = foundIdx;
+      activateLocation(locId);
+    }
+
+    function resumeAfterUser() {
+      if (resumeTimeout) clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => {
+        isUserHovering = false;
+        startAutoRotation();
+      }, 3500);
+    }
+
     // List item events
     listItems.forEach(item => {
       const locId = item.dataset.loc;
       
-      item.addEventListener('mouseenter', () => activateLocation(locId));
-      item.addEventListener('click', () => activateLocation(locId));
-      item.addEventListener('touchstart', () => activateLocation(locId), { passive: true });
+      item.addEventListener('mouseenter', () => pauseForUser(locId));
+      item.addEventListener('mouseleave', () => resumeAfterUser());
+      item.addEventListener('click', () => {
+        pauseForUser(locId);
+        resumeAfterUser();
+      });
+      item.addEventListener('touchstart', () => {
+        pauseForUser(locId);
+        resumeAfterUser();
+      }, { passive: true });
     });
 
     // Radar node events
@@ -748,20 +811,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const locId = node.dataset.target;
 
       node.addEventListener('mouseenter', () => {
-        activateLocation(locId);
+        pauseForUser(locId);
         scrollToListItem(locId);
       });
 
+      node.addEventListener('mouseleave', () => resumeAfterUser());
+
       node.addEventListener('click', () => {
-        activateLocation(locId);
+        pauseForUser(locId);
         scrollToListItem(locId);
+        resumeAfterUser();
       });
 
       node.addEventListener('touchstart', () => {
-        activateLocation(locId);
+        pauseForUser(locId);
         scrollToListItem(locId);
+        resumeAfterUser();
       }, { passive: true });
     });
+
+    if (locationSection) {
+      locationSection.addEventListener('mouseleave', () => {
+        isUserHovering = false;
+        startAutoRotation();
+      });
+    }
 
     function scrollToListItem(locId) {
       const targetItem = document.querySelector(`.nearby-list-item[data-loc="${locId}"]`);
@@ -770,8 +844,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Initial highlight: Radisson Blu (Opposite)
-    activateLocation('loc-radisson');
+    // Start with Nouka Vihar / Initial location and begin continuous 360-degree rotation
+    activateLocation(ROTATION_SEQUENCE[0]);
+    startAutoRotation();
   }
 
   // Initialize
