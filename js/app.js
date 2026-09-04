@@ -692,76 +692,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================================
-  // 13. INTERACTIVE RADAR & NEARBY LOCATIONS
-  // ==========================================
-
-  function initNearbyRadarInteractions() {
-    const listItems = document.querySelectorAll('.nearby-list-item');
-    const radarPins = document.querySelectorAll('.radar-pin-node');
-    const connectorLines = document.querySelectorAll('.radar-connector-line');
-
-    if (!listItems.length) return;
-
-    function activateLocation(locId) {
-      if (!locId) return;
-
-      // Update list items
-      listItems.forEach(item => {
-        if (item.getAttribute('data-location-id') === locId) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
-
-      // Update radar pins
-      radarPins.forEach(pin => {
-        if (pin.getAttribute('data-location-id') === locId) {
-          pin.classList.add('active');
-        } else {
-          pin.classList.remove('active');
-        }
-      });
-
-      // Update connector lines
-      connectorLines.forEach(line => {
-        if (line.getAttribute('data-location-id') === locId) {
-          line.classList.add('active');
-        } else {
-          line.classList.remove('active');
-        }
-      });
-    }
-
-    // List item events
-    listItems.forEach(item => {
-      const locId = item.getAttribute('data-location-id');
-      item.addEventListener('mouseenter', () => activateLocation(locId));
-      item.addEventListener('click', () => activateLocation(locId));
-      item.addEventListener('touchstart', () => activateLocation(locId), { passive: true });
-    });
-
-    // Radar pin events
-    radarPins.forEach(pin => {
-      const locId = pin.getAttribute('data-location-id');
-      pin.addEventListener('mouseenter', () => activateLocation(locId));
-      pin.addEventListener('click', () => {
-        activateLocation(locId);
-        const targetListItem = document.querySelector(`.nearby-list-item[data-location-id="${locId}"]`);
-        if (targetListItem) {
-          targetListItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      });
-      pin.addEventListener('touchstart', () => activateLocation(locId), { passive: true });
-    });
-  }
-
   // Initialize
   updateAllPriceTags();
   initGsapAnimations();
   init3DCardTilt();
   initMagneticButtons();
-  initNearbyRadarInteractions();
 
 });
