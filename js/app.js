@@ -175,14 +175,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('mobile-open');
+      const isOpen = navMenu.classList.toggle('mobile-open');
       mobileToggle.classList.toggle('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    document.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('.nav-menu a').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('mobile-open');
         mobileToggle.classList.remove('open');
+        document.body.style.overflow = '';
       });
     });
   }

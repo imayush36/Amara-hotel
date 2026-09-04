@@ -2367,9 +2367,10 @@ img {
 }
 
 /* ==========================================================================
-   Responsive Media Queries
+   Comprehensive Mobile & Tablet Responsive Media Queries
    ========================================================================== */
 
+/* Tablets & Small Laptops (<= 1024px) */
 @media (max-width: 1024px) {
   .nav-links {
     display: none;
@@ -2381,28 +2382,72 @@ img {
 
   .nav-menu.mobile-open {
     display: block;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 66px;
     left: 0;
     right: 0;
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border-card);
-    padding: 1.75rem;
-    box-shadow: var(--shadow-lg);
+    bottom: 0;
+    background: rgba(14, 13, 11, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(179, 146, 78, 0.25);
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    z-index: 999;
   }
 
   .nav-menu.mobile-open .nav-links {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.1rem;
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .nav-menu.mobile-open .nav-links li {
+    width: 100%;
+  }
+
+  .nav-menu.mobile-open .nav-link {
+    font-size: 1.2rem;
+    font-family: var(--font-serif-heading);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: block;
+    width: 100%;
+  }
+
+  .nav-menu.mobile-open .has-dropdown .nav-dropdown {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 1.25rem;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .nav-menu.mobile-open .has-dropdown .nav-dropdown li a {
+    font-size: 0.95rem;
+    padding: 0.35rem 0;
+    color: var(--text-secondary);
+  }
+
+  .location-hub-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
   .editorial-intro-row,
   .dining-grid,
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
   .editorial-cards-grid,
@@ -2413,39 +2458,387 @@ img {
   .booking-bar-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
 }
 
+/* Standard Mobile & Phablets (<= 768px) */
 @media (max-width: 768px) {
-  .top-info-left {
+  body {
+    font-size: 0.92rem;
+  }
+
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  /* Header & Brand */
+  .nav-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .brand-monogram-box {
+    width: 38px;
+    height: 38px;
+    font-size: 1.15rem;
+    border-radius: 8px;
+  }
+
+  .brand-logo-text {
+    font-size: 1.12rem;
+  }
+
+  .brand-subtitle-tag {
+    font-size: 0.55rem;
+  }
+
+  .nav-reserve-btn {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.78rem;
+  }
+
+  /* Section Padding */
+  .hero-section,
+  .about-section,
+  .rooms-section,
+  .dining-section,
+  .restaurant-section,
+  .gallery-section,
+  .location-section,
+  .reservation-section,
+  .contact-section {
+    padding: 4.5rem 0;
+  }
+
+  .section-title,
+  .editorial-headline,
+  .reservation-title,
+  .contact-title {
+    font-size: 2.1rem;
+  }
+
+  .section-lead {
+    font-size: 0.94rem;
+  }
+
+  /* Hero adjustments */
+  .hero-badge-pill {
+    font-size: 0.68rem;
+    padding: 0.35rem 0.85rem;
+    text-align: center;
+  }
+
+  .hero-main-title {
+    font-size: 2.6rem;
+  }
+
+  .hero-main-lead {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  .hero-cinematic-viewport {
+    height: 320px;
+    border-radius: 16px;
+  }
+
+  .hero-floating-details {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 0.65rem 0.85rem;
+    gap: 0.5rem;
+    justify-content: space-around;
+  }
+
+  .hero-stat-divider {
     display: none;
   }
 
+  .hero-stat-badge .stat-number {
+    font-size: 1.1rem;
+  }
+
+  .hero-stat-badge .stat-label {
+    font-size: 0.62rem;
+  }
+
+  .cover-overlay-tag {
+    display: none;
+  }
+
+  /* Booking bar on mobile */
+  .hero-booking-bar {
+    padding: 1.25rem;
+    border-radius: 18px;
+    margin-top: 1.75rem;
+  }
+
+  .booking-bar-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .booking-input,
+  .res-input,
+  .inquiry-input,
+  .inquiry-textarea {
+    font-size: 16px; /* Prevents auto-zoom in mobile Safari */
+  }
+
+  /* Filter Tabs with horizontal swipe */
+  .rooms-filter-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.25rem 0.5rem 0.85rem;
+    gap: 0.5rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .rooms-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.78rem;
+    padding: 0.5rem 1.1rem;
+  }
+
+  /* Grids to 1 column */
   .rooms-grid,
   .spaces-grid,
   .editorial-cards-grid,
   .gallery-grid {
     grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .room-image-wrap {
+    height: 240px;
+  }
+
+  .room-card-footer {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .room-card-footer .btn {
+    width: 100%;
+  }
+
+  /* Dining image */
+  .dining-image-col {
+    height: 280px;
+  }
+
+  .dining-highlights-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Location Radar Hub on mobile */
+  .radar-map-card {
+    padding: 1rem 0.75rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  .radar-map-wrapper {
+    max-width: 340px;
+  }
+
+  .hub-pin-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+  }
+
+  .hub-pin-title {
+    font-size: 0.64rem;
+  }
+
+  .hub-opposite-pill {
+    font-size: 0.55rem;
+    padding: 0.08rem 0.35rem;
+  }
+
+  .pin-marker {
+    width: 25px;
+    height: 25px;
+    font-size: 0.72rem;
+  }
+
+  .pin-tooltip strong {
+    font-size: 0.68rem;
+  }
+
+  .pin-tooltip span {
+    font-size: 0.6rem;
+  }
+
+  .nearby-list-container {
+    max-height: none;
+    gap: 0.55rem;
+  }
+
+  .nearby-list-item {
+    padding: 0.85rem 1rem;
+    gap: 0.85rem;
+  }
+
+  .nearby-item-icon-box {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .nearby-item-title {
+    font-size: 0.92rem;
+  }
+
+  .nearby-item-sub {
+    font-size: 0.75rem;
+  }
+
+  .nearby-time-badge {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.7rem;
+  }
+
+  .radar-open-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Reservation Form */
+  .reservation-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: 18px;
   }
 
   .res-form-grid {
     grid-template-columns: 1fr;
+    gap: 1.15rem;
   }
 
   .res-summary-box {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 1.25rem;
   }
 
+  .res-summary-box .btn {
+    width: 100%;
+  }
+
+  /* Contact */
+  .contact-info-card,
+  .contact-form-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  .contact-quick-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-quick-buttons .btn {
+    width: 100%;
+  }
+
+  /* Modals */
+  .modal-body-content {
+    flex-direction: column;
+  }
+
+  .modal-img-wrap {
+    height: 200px;
+  }
+
+  .modal-info-wrap {
+    padding: 1.25rem;
+  }
+
+  .modal-room-title {
+    font-size: 1.5rem;
+  }
+
+  /* Floating Widgets */
+  .whatsapp-float {
+    bottom: 18px;
+    right: 18px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .whatsapp-tooltip {
+    display: none;
+  }
+
+  .floating-scroll-actions {
+    bottom: 18px;
+    left: 18px;
+  }
+
+  .floating-book-pill {
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+  }
+
+  /* Footer */
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2.25rem;
+  }
+}
+
+/* Small Phones (<= 480px) */
+@media (max-width: 480px) {
+  .hero-main-title {
+    font-size: 2.15rem;
   }
 
-  .booking-bar-grid {
+  .section-title,
+  .editorial-headline,
+  .reservation-title,
+  .contact-title {
+    font-size: 1.85rem;
+  }
+
+  .dining-highlights-grid {
     grid-template-columns: 1fr;
   }
 
-  .dining-image-col {
-    height: 350px;
+  .radar-map-wrapper {
+    max-width: 290px;
+  }
+
+  .hub-pin-title {
+    font-size: 0.58rem;
+  }
+
+  .nearby-tag-special {
+    display: none;
+  }
+
+  .footer-brand-title {
+    font-size: 1.5rem;
   }
 }
