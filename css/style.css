@@ -2434,11 +2434,12 @@ img {
 
 /* Tablets & Small Laptops (<= 1024px) */
 @media (max-width: 1024px) {
-  .nav-links {
-    display: none;
+  /* Complete Navbar Reset for Mobile */
+  .nav-menu {
+    display: none !important;
   }
 
-  /* Hide Reservation Button on Mobile/Tablet Navbar Header */
+  /* Hide Desktop Reservation Button on Mobile/Tablet Header */
   .nav-reserve-btn {
     display: none !important;
   }
@@ -2447,10 +2448,34 @@ img {
     display: block;
   }
 
-  .mobile-drawer-header {
+  /* Fullscreen Luxury Mobile Menu Drawer */
+  .nav-menu.mobile-open {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(14, 13, 11, 0.98);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    padding: 5.5rem 1.5rem 2rem;
+    overflow-y: auto;
+    z-index: 999;
+    animation: fadeInDrawer 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes fadeInDrawer {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .nav-menu.mobile-open .mobile-drawer-header {
     display: block;
     padding-bottom: 1.25rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     border-bottom: 1px solid rgba(179, 146, 78, 0.2);
   }
 
@@ -2493,34 +2518,11 @@ img {
     font-weight: 600;
   }
 
-  .nav-menu.mobile-open {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(14, 13, 11, 0.98);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    padding: 5rem 1.5rem 1.75rem;
-    overflow-y: auto;
-    z-index: 999;
-    animation: fadeInDrawer 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  @keyframes fadeInDrawer {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   .nav-menu.mobile-open .nav-links {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.4rem;
+    gap: 0.35rem;
     width: 100%;
     margin-bottom: 1.5rem;
   }
@@ -2530,7 +2532,7 @@ img {
   }
 
   .nav-menu.mobile-open .nav-link {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-family: var(--font-serif-heading);
     padding: 0.6rem 0.5rem;
     color: #e2ded9;
@@ -2545,7 +2547,7 @@ img {
   .nav-menu.mobile-open .nav-link:hover,
   .nav-menu.mobile-open .nav-link:active {
     color: var(--brand-primary);
-    padding-left: 0.85rem;
+    padding-left: 0.75rem;
     border-bottom-color: rgba(179, 146, 78, 0.3);
   }
 
@@ -2567,7 +2569,7 @@ img {
   }
 
   .nav-menu.mobile-open .has-dropdown .nav-dropdown li a {
-    font-size: 1.02rem;
+    font-size: 1rem;
     padding: 0.35rem 0;
     color: #b5b0a8;
     display: block;
@@ -2577,7 +2579,7 @@ img {
     color: var(--brand-primary);
   }
 
-  .mobile-drawer-footer {
+  .nav-menu.mobile-open .mobile-drawer-footer {
     display: flex;
     flex-direction: column;
     gap: 1.15rem;
