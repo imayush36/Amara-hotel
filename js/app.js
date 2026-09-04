@@ -692,10 +692,93 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================
+  // 13. NEARBY RADAR & DESTINATIONS INTERACTIVITY
+  // ==========================================
+
+  function initNearbyRadarInteractions() {
+    const listItems = document.querySelectorAll('.nearby-list-item');
+    const radarNodes = document.querySelectorAll('.radar-node');
+    const radarLines = document.querySelectorAll('.radar-line');
+    if (!listItems.length || !radarNodes.length) return;
+
+    function activateLocation(locId) {
+      if (!locId) return;
+      const cleanId = locId.replace('loc-', '');
+
+      // 1. Sync List Items
+      listItems.forEach(item => {
+        if (item.dataset.loc === locId || item.dataset.loc === `loc-${cleanId}`) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      // 2. Sync Radar Nodes
+      radarNodes.forEach(node => {
+        if (node.dataset.target === locId || node.dataset.target === `loc-${cleanId}`) {
+          node.classList.add('active');
+        } else {
+          node.classList.remove('active');
+        }
+      });
+
+      // 3. Sync Radar Vector Lines
+      radarLines.forEach(line => {
+        if (line.id === `line-${cleanId}`) {
+          line.classList.add('active');
+        } else {
+          line.classList.remove('active');
+        }
+      });
+    }
+
+    // List item events
+    listItems.forEach(item => {
+      const locId = item.dataset.loc;
+      
+      item.addEventListener('mouseenter', () => activateLocation(locId));
+      item.addEventListener('click', () => activateLocation(locId));
+      item.addEventListener('touchstart', () => activateLocation(locId), { passive: true });
+    });
+
+    // Radar node events
+    radarNodes.forEach(node => {
+      const locId = node.dataset.target;
+
+      node.addEventListener('mouseenter', () => {
+        activateLocation(locId);
+        scrollToListItem(locId);
+      });
+
+      node.addEventListener('click', () => {
+        activateLocation(locId);
+        scrollToListItem(locId);
+      });
+
+      node.addEventListener('touchstart', () => {
+        activateLocation(locId);
+        scrollToListItem(locId);
+      }, { passive: true });
+    });
+
+    function scrollToListItem(locId) {
+      const targetItem = document.querySelector(`.nearby-list-item[data-loc="${locId}"]`);
+      if (targetItem) {
+        targetItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // Initial highlight: Radisson Blu (Opposite)
+    activateLocation('loc-radisson');
+  }
+
   // Initialize
   updateAllPriceTags();
   initGsapAnimations();
   init3DCardTilt();
   initMagneticButtons();
+  initNearbyRadarInteractions();
 
 });
