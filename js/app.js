@@ -723,7 +723,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let isUserHovering = false;
 
     function activateLocation(locId) {
-      if (!locId) return;
+      if (!locId) {
+        listItems.forEach(item => item.classList.remove('active'));
+        radarNodes.forEach(node => node.classList.remove('active'));
+        radarLines.forEach(line => line.classList.remove('active'));
+        return;
+      }
       const cleanId = locId.replace('loc-', '');
 
       // 1. Sync List Items
@@ -754,56 +759,13 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    function stepAutoRotation() {
-      if (isUserHovering) return;
-      currentSeqIndex = (currentSeqIndex + 1) % ROTATION_SEQUENCE.length;
-      const nextLocId = ROTATION_SEQUENCE[currentSeqIndex];
-      activateLocation(nextLocId);
-    }
-
-    function startAutoRotation() {
-      stopAutoRotation();
-      autoRotateTimer = setInterval(stepAutoRotation, 2200);
-    }
-
-    function stopAutoRotation() {
-      if (autoRotateTimer) {
-        clearInterval(autoRotateTimer);
-        autoRotateTimer = null;
-      }
-    }
-
-    function pauseForUser(locId) {
-      isUserHovering = true;
-      stopAutoRotation();
-      if (resumeTimeout) clearTimeout(resumeTimeout);
-      const foundIdx = ROTATION_SEQUENCE.indexOf(locId);
-      if (foundIdx !== -1) currentSeqIndex = foundIdx;
-      activateLocation(locId);
-    }
-
-    function resumeAfterUser() {
-      if (resumeTimeout) clearTimeout(resumeTimeout);
-      resumeTimeout = setTimeout(() => {
-        isUserHovering = false;
-        startAutoRotation();
-      }, 3500);
-    }
-
     // List item events
     listItems.forEach(item => {
       const locId = item.dataset.loc;
       
-      item.addEventListener('mouseenter', () => pauseForUser(locId));
-      item.addEventListener('mouseleave', () => resumeAfterUser());
-      item.addEventListener('click', () => {
-        pauseForUser(locId);
-        resumeAfterUser();
-      });
-      item.addEventListener('touchstart', () => {
-        pauseForUser(locId);
-        resumeAfterUser();
-      }, { passive: true });
+      item.addEventListener('mouseenter', () => activateLocation(locId));
+      item.addEventListener('click', () => activateLocation(locId));
+      item.addEventListener('touchstart', () => activateLocation(locId), { passive: true });
     });
 
     // Radar node events
@@ -811,31 +773,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const locId = node.dataset.target;
 
       node.addEventListener('mouseenter', () => {
-        pauseForUser(locId);
+        activateLocation(locId);
         scrollToListItem(locId);
       });
 
-      node.addEventListener('mouseleave', () => resumeAfterUser());
-
       node.addEventListener('click', () => {
-        pauseForUser(locId);
+        activateLocation(locId);
         scrollToListItem(locId);
-        resumeAfterUser();
       });
 
       node.addEventListener('touchstart', () => {
-        pauseForUser(locId);
+        activateLocation(locId);
         scrollToListItem(locId);
-        resumeAfterUser();
       }, { passive: true });
     });
-
-    if (locationSection) {
-      locationSection.addEventListener('mouseleave', () => {
-        isUserHovering = false;
-        startAutoRotation();
-      });
-    }
 
     function scrollToListItem(locId) {
       const targetItem = document.querySelector(`.nearby-list-item[data-loc="${locId}"]`);
@@ -844,9 +795,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Start with Nouka Vihar / Initial location and begin continuous 360-degree rotation
-    activateLocation(ROTATION_SEQUENCE[0]);
-    startAutoRotation();
+    // Default initial location
+    activateLocation('loc-radisson');
   }
 
   // Initialize

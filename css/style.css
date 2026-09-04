@@ -3324,24 +3324,46 @@ img {
   pointer-events: none;
 }
 
-@keyframes radarSweepBeam {
-  from {
+/* Continuous 360° Smooth Rotating Yellow Radar Beam & Needle */
+@keyframes continuous360RadarSpin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
 
-.radar-sweep-beam {
+.radar-rotating-beam-wrap {
   position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  animation: continuous360RadarSpin 5s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.radar-yellow-scan-line {
+  position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
+  width: 3px;
+  height: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, #ffd700, #e5c378, rgba(245, 215, 110, 0.6));
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.95), 0 0 24px rgba(212, 175, 55, 0.75);
+  border-radius: 4px;
+}
+
+.radar-sweep-cone {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, transparent 0deg, transparent 310deg, rgba(179, 146, 78, 0.12) 360deg);
-  animation: radarSweepBeam 9s linear infinite;
+  background: conic-gradient(from 270deg at 50% 50%, rgba(245, 215, 110, 0.3) 0deg, rgba(212, 175, 55, 0.08) 40deg, transparent 75deg, transparent 360deg);
   pointer-events: none;
 }
 
