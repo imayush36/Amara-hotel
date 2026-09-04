@@ -5,6 +5,8 @@
   "description": "Hotel Buddha Avenue & Amara Luxury Boutique Hotel Website",
   "scripts": {
     "dev": "node server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo 'Static build complete'",
+    "vercel-build": "echo 'Static build complete'"
   }
 }
