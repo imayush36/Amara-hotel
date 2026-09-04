@@ -2,7 +2,7 @@
   "name": "amara-hotel",
   "version": "1.0.0",
   "private": true,
-  "description": "Hotel Buddha Avenue & Amara Luxury Boutique Hotel Website",
+  "description": "Amara Hotel - Luxury Boutique Hotel Website",
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",

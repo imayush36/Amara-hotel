@@ -1,5 +1,5 @@
 /**
- * HOTEL BUDDHA AVENUE — GORAKHPUR
+ * AMARA HOTEL — GORAKHPUR
  * Luxury Hotel Web Application Engine
  */
 
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 1. DATA & CONSTANTS
   // ==========================================
-  
+
   const CURRENCY_RATES = {
     INR: { symbol: 'Rs. ', rate: 1, name: 'Indian Rupee' },
     USD: { symbol: '$', rate: 0.012, name: 'US Dollar' },
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       priceINR: 4999,
       bed: 'Grand King Bed',
       image: 'assets/images/bindery_suite.jpg',
-      description: 'Our master Suite Room is the pinnacle of Buddha Avenue indulgence. Offers an independent drawing salon with sofa set, private bedroom with master king bed, luxury bath, and 24/7 dedicated service.',
+      description: 'Our master Suite Room is the pinnacle of Amara Hotel indulgence. Offers an independent drawing salon with sofa set, private bedroom with master king bed, luxury bath, and 24/7 dedicated service.',
       amenities: [
         'Separate drawing room with plush sofa set',
         'Deep soaking bathtub & complimentary bathrobes',
@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inqForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('inq-name')?.value || 'Guest';
-      showToast(`Thank you, ${name}! Your inquiry has been sent to Hotel Buddha Avenue.`);
+      showToast(`Thank you, ${name}! Your inquiry has been sent to Amara Hotel.`);
       inqForm.reset();
     });
   }
@@ -457,8 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tlHero = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.1 });
 
     tlHero
-      .from('.top-contact-bar', { y: -25, opacity: 0, duration: 0.6 })
-      .from('.main-navbar', { y: -20, opacity: 0, duration: 0.6 }, '-=0.3')
+      .from('.main-navbar', { y: -20, opacity: 0, duration: 0.6 })
       .from('.hero-badge-pill', { y: -25, opacity: 0, duration: 0.8 }, '-=0.2')
       .from('.hero-main-title', { y: 40, opacity: 0, duration: 1.0, ease: 'power4.out' }, '-=0.4')
       .from('.hero-tagline-sub', { opacity: 0, letterSpacing: '0.4em', duration: 0.8 }, '-=0.6')
@@ -544,8 +543,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Staggered Room Cards Reveal
     ScrollTrigger.batch('.room-card', {
       start: 'top 88%',
-      onEnter: (elements) => gsap.fromTo(elements, 
-        { y: 40, opacity: 0, scale: 0.96 }, 
+      onEnter: (elements) => gsap.fromTo(elements,
+        { y: 40, opacity: 0, scale: 0.96 },
         { y: 0, opacity: 1, scale: 1, stagger: 0.12, duration: 0.75, ease: 'power3.out', overwrite: 'auto' }
       )
     });
@@ -553,8 +552,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Staggered Editorial & Space Cards
     ScrollTrigger.batch('.editorial-card, .space-card, .gallery-item', {
       start: 'top 88%',
-      onEnter: (elements) => gsap.fromTo(elements, 
-        { y: 35, opacity: 0 }, 
+      onEnter: (elements) => gsap.fromTo(elements,
+        { y: 35, opacity: 0 },
         { y: 0, opacity: 1, stagger: 0.1, duration: 0.7, ease: 'power2.out', overwrite: 'auto' }
       )
     });
@@ -646,10 +645,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================
+  // 13. INTERACTIVE RADAR & NEARBY LOCATIONS
+  // ==========================================
+
+  function initNearbyRadarInteractions() {
+    const listItems = document.querySelectorAll('.nearby-list-item');
+    const radarPins = document.querySelectorAll('.radar-pin-node');
+    const connectorLines = document.querySelectorAll('.radar-connector-line');
+
+    if (!listItems.length) return;
+
+    function activateLocation(locId) {
+      if (!locId) return;
+
+      // Update list items
+      listItems.forEach(item => {
+        if (item.getAttribute('data-location-id') === locId) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      // Update radar pins
+      radarPins.forEach(pin => {
+        if (pin.getAttribute('data-location-id') === locId) {
+          pin.classList.add('active');
+        } else {
+          pin.classList.remove('active');
+        }
+      });
+
+      // Update connector lines
+      connectorLines.forEach(line => {
+        if (line.getAttribute('data-location-id') === locId) {
+          line.classList.add('active');
+        } else {
+          line.classList.remove('active');
+        }
+      });
+    }
+
+    // List item events
+    listItems.forEach(item => {
+      const locId = item.getAttribute('data-location-id');
+      item.addEventListener('mouseenter', () => activateLocation(locId));
+      item.addEventListener('click', () => activateLocation(locId));
+      item.addEventListener('touchstart', () => activateLocation(locId), { passive: true });
+    });
+
+    // Radar pin events
+    radarPins.forEach(pin => {
+      const locId = pin.getAttribute('data-location-id');
+      pin.addEventListener('mouseenter', () => activateLocation(locId));
+      pin.addEventListener('click', () => {
+        activateLocation(locId);
+        const targetListItem = document.querySelector(`.nearby-list-item[data-location-id="${locId}"]`);
+        if (targetListItem) {
+          targetListItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+      pin.addEventListener('touchstart', () => activateLocation(locId), { passive: true });
+    });
+  }
+
   // Initialize
   updateAllPriceTags();
   initGsapAnimations();
   init3DCardTilt();
   initMagneticButtons();
+  initNearbyRadarInteractions();
 
 });

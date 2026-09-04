@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HOTEL BUDDHA AVENUE — GORAKHPUR
+   AMARA HOTEL — GORAKHPUR
    Ultra-Luxury Boutique Hotel & Fine Dining Design System
    ========================================================================== */
 
@@ -80,7 +80,9 @@
    Base & Resets
    ========================================================================== */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -106,7 +108,11 @@ body {
   padding: 0 1.5rem;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: var(--font-serif-heading);
   color: var(--text-primary);
   font-weight: 600;
@@ -171,7 +177,7 @@ img {
   pointer-events: none;
   transform: translateX(10px);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -181,8 +187,15 @@ img {
 }
 
 @keyframes pulse-green {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-  50% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+
+  50% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
 }
 
 /* ==========================================================================
@@ -742,8 +755,13 @@ img {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .ticker-item {
@@ -1340,6 +1358,455 @@ img {
 }
 
 /* ==========================================================================
+   Strategic Location & Radar Hub Section
+   ========================================================================== */
+
+.location-section {
+  padding: 7rem 0;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.location-hub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-top: 3.5rem;
+}
+
+/* Radar Map Column & Card */
+.radar-map-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.radar-map-card {
+  background: #0f0d0b;
+  border: 1px solid rgba(179, 146, 78, 0.25);
+  border-radius: 24px;
+  padding: 1.5rem 1.5rem 1.8rem;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(179, 146, 78, 0.08);
+  position: relative;
+}
+
+.radar-map-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 480px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, #171410 0%, #0c0a08 100%);
+  overflow: visible;
+  border: 1px solid rgba(179, 146, 78, 0.2);
+}
+
+/* SVG Radar Canvas */
+.radar-svg-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.radar-ring {
+  fill: none;
+  stroke: rgba(179, 146, 78, 0.15);
+  stroke-width: 0.5;
+}
+
+.ring-1 {
+  stroke-dasharray: 2, 2;
+}
+
+.ring-2 {
+  stroke: rgba(179, 146, 78, 0.18);
+}
+
+.ring-3 {
+  stroke-dasharray: 3, 3;
+}
+
+.ring-4 {
+  stroke: rgba(179, 146, 78, 0.25);
+  stroke-width: 0.8;
+}
+
+.radar-axis {
+  stroke: rgba(179, 146, 78, 0.12);
+  stroke-width: 0.4;
+  stroke-dasharray: 1, 2;
+}
+
+.radar-axis-diag {
+  stroke: rgba(179, 146, 78, 0.08);
+  stroke-width: 0.3;
+}
+
+/* Sweeping Radar Beam */
+.radar-sweep-beam {
+  stroke: rgba(179, 146, 78, 0.4);
+  stroke-width: 1.2;
+  transform-origin: 50px 50px;
+  animation: radarSweep 9s linear infinite;
+}
+
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Connector Lines */
+.radar-connector-line {
+  stroke: rgba(179, 146, 78, 0.2);
+  stroke-width: 0.6;
+  stroke-dasharray: 1.5, 2;
+  transition: all 0.35s ease;
+}
+
+.radar-connector-line.active {
+  stroke: #dfc299;
+  stroke-width: 1.5;
+  stroke-dasharray: none;
+  filter: drop-shadow(0 0 5px rgba(223, 194, 153, 0.8));
+}
+
+/* Center Hub: AMARA HOTEL */
+.radar-center-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.hub-pulse-ring {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  top: -4px;
+  border-radius: 50%;
+  background: rgba(179, 146, 78, 0.25);
+  animation: hubPulse 2.5s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes hubPulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.hub-pin-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--brand-gradient);
+  border: 2px solid #fff;
+  box-shadow: 0 0 20px rgba(179, 146, 78, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.hub-pin-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fdf4d8;
+  letter-spacing: 0.08em;
+  margin-top: 0.35rem;
+  white-space: nowrap;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.hub-opposite-pill {
+  font-size: 0.62rem;
+  font-family: var(--font-sans);
+  background: rgba(179, 146, 78, 0.2);
+  color: #dfc299;
+  border: 1px solid rgba(179, 146, 78, 0.4);
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  margin-top: 0.15rem;
+  white-space: nowrap;
+}
+
+/* Surround Radar Pins */
+.radar-pin-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pin-marker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #1e1b17;
+  border: 1.5px solid rgba(179, 146, 78, 0.45);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.radar-pin-node:hover .pin-marker,
+.radar-pin-node.active .pin-marker {
+  background: var(--brand-gradient);
+  border-color: #ffffff;
+  box-shadow: 0 0 18px rgba(179, 146, 78, 0.9);
+  transform: scale(1.25);
+}
+
+.pin-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(14, 12, 10, 0.94);
+  border: 1px solid rgba(179, 146, 78, 0.4);
+  backdrop-filter: blur(10px);
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+  z-index: 20;
+}
+
+.pin-tooltip strong {
+  font-size: 0.74rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.pin-tooltip span {
+  font-size: 0.65rem;
+  color: var(--brand-primary);
+  font-family: var(--font-mono);
+  margin-top: 0.1rem;
+}
+
+.radar-pin-node:hover .pin-tooltip,
+.radar-pin-node.active .pin-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Radar Footer Button */
+.radar-map-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.radar-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(179, 146, 78, 0.5);
+  color: #dfc299;
+  background: rgba(179, 146, 78, 0.08);
+  transition: all var(--transition-fast);
+}
+
+.radar-open-btn:hover {
+  background: var(--brand-gradient);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 6px 20px var(--brand-glow);
+  transform: translateY(-2px);
+}
+
+/* Nearby List Column */
+.nearby-list-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.nearby-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-height: 560px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom sleek scrollbar for nearby list */
+.nearby-list-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.nearby-list-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+
+.nearby-list-container::-webkit-scrollbar-thumb {
+  background: rgba(179, 146, 78, 0.3);
+  border-radius: 4px;
+}
+
+.nearby-list-container::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}
+
+.nearby-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  padding: 0.95rem 1.25rem;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.2, 0, 0, 1);
+  position: relative;
+}
+
+.nearby-list-item:hover,
+.nearby-list-item.active {
+  background: rgba(179, 146, 78, 0.1);
+  border-color: rgba(179, 146, 78, 0.45);
+  transform: translateX(6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.nearby-item-icon-box {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #24201b;
+  border: 1px solid rgba(179, 146, 78, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  transition: all 0.25s ease;
+}
+
+.nearby-list-item:hover .nearby-item-icon-box,
+.nearby-list-item.active .nearby-item-icon-box {
+  background: rgba(179, 146, 78, 0.25);
+  border-color: var(--brand-primary);
+  transform: scale(1.08);
+}
+
+.nearby-item-text {
+  flex-grow: 1;
+}
+
+.nearby-item-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.nearby-item-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  transition: color 0.25s ease;
+}
+
+.nearby-list-item:hover .nearby-item-title,
+.nearby-list-item.active .nearby-item-title {
+  color: #dfc299;
+}
+
+.nearby-tag-special {
+  background: var(--brand-primary);
+  color: #111111;
+  font-size: 0.64rem;
+  font-weight: 800;
+  padding: 0.12rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nearby-item-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+
+.nearby-time-badge {
+  flex-shrink: 0;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  background: rgba(179, 146, 78, 0.1);
+  border: 1px solid rgba(179, 146, 78, 0.25);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.nearby-list-item:hover .nearby-time-badge,
+.nearby-list-item.active .nearby-time-badge {
+  background: var(--brand-primary);
+  color: #111111;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 10px rgba(179, 146, 78, 0.4);
+}
+
+@media (max-width: 992px) {
+  .location-hub-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .nearby-list-container {
+    max-height: none;
+  }
+}
+
+/* ==========================================================================
    Reservation Section
    ========================================================================== */
 
@@ -1470,7 +1937,8 @@ img {
   gap: 3.5rem;
 }
 
-.contact-info-card, .contact-form-card {
+.contact-info-card,
+.contact-form-card {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
@@ -1549,7 +2017,8 @@ img {
   font-weight: 600;
 }
 
-.inquiry-input, .inquiry-textarea {
+.inquiry-input,
+.inquiry-textarea {
   width: 100%;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
@@ -1561,7 +2030,8 @@ img {
   font-family: var(--font-sans);
 }
 
-.inquiry-input:focus, .inquiry-textarea:focus {
+.inquiry-input:focus,
+.inquiry-textarea:focus {
   border-color: var(--brand-primary);
   box-shadow: 0 0 10px var(--brand-glow);
 }
@@ -1728,7 +2198,7 @@ img {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   animation: slide-in 0.3s ease forwards;
 }
 
@@ -1739,8 +2209,15 @@ img {
 }
 
 @keyframes slide-in {
-  from { opacity: 0; transform: translateY(-15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================================================
@@ -1921,12 +2398,15 @@ img {
     gap: 1.1rem;
   }
 
-  .editorial-intro-row, .dining-grid, .contact-grid {
+  .editorial-intro-row,
+  .dining-grid,
+  .contact-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
 
-  .editorial-cards-grid, .gallery-grid {
+  .editorial-cards-grid,
+  .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1940,7 +2420,10 @@ img {
     display: none;
   }
 
-  .rooms-grid, .spaces-grid, .editorial-cards-grid, .gallery-grid {
+  .rooms-grid,
+  .spaces-grid,
+  .editorial-cards-grid,
+  .gallery-grid {
     grid-template-columns: 1fr;
   }
 
