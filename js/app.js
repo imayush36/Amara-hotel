@@ -460,8 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tlHero
       .from('.main-navbar', { y: -20, opacity: 0, duration: 0.6 })
-      .from('.hero-badge-pill', { y: -25, opacity: 0, duration: 0.8 }, '-=0.2')
-      .from('.hero-main-title', { y: 40, opacity: 0, duration: 1.0, ease: 'power4.out' }, '-=0.4')
+      .from('.hero-main-title', { y: 40, opacity: 0, duration: 1.0, ease: 'power4.out' }, '-=0.3')
       .from('.hero-tagline-sub', { opacity: 0, letterSpacing: '0.4em', duration: 0.8 }, '-=0.6')
       .from('.hero-main-lead', { y: 25, opacity: 0, duration: 0.8 }, '-=0.5')
       .from('.hero-cta-group', { y: 20, opacity: 0, scale: 0.95, duration: 0.7 }, '-=0.4')
