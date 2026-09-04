@@ -2442,10 +2442,10 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.72);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 998;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 9998;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2456,7 +2456,8 @@ img {
     pointer-events: auto;
   }
 
-  /* Desktop Reservation Button Hidden in Header */
+  /* Desktop elements hidden on mobile */
+  .desktop-nav-menu,
   .nav-reserve-btn {
     display: none !important;
   }
@@ -2465,23 +2466,23 @@ img {
     display: block;
   }
 
-  /* Ultra-Luxury Off-Canvas Mobile Drawer */
-  .nav-menu {
+  /* Standalone Luxury Mobile Drawer */
+  .mobile-nav-drawer {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
-    width: min(350px, 86vw);
+    width: min(340px, 86vw);
     height: 100vh;
     height: 100dvh;
-    background: linear-gradient(180deg, #161411 0%, #0d0c0a 100%);
+    background: linear-gradient(180deg, #161410 0%, #0d0c0a 100%);
     border-left: 1px solid rgba(179, 146, 78, 0.35);
-    box-shadow: -15px 0 50px rgba(0, 0, 0, 0.8);
-    z-index: 999;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1.4rem 1.25rem 1.75rem;
+    box-shadow: -15px 0 50px rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    padding: 1.4rem 1.25rem 1.65rem;
     overflow-y: auto;
     transform: translateX(105%);
     transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2489,13 +2490,13 @@ img {
     visibility: hidden;
   }
 
-  .nav-menu.mobile-open {
+  .mobile-nav-drawer.drawer-open {
     transform: translateX(0);
     pointer-events: auto;
     visibility: visible;
   }
 
-  /* Drawer Header */
+  /* Mobile Drawer Header */
   .mobile-drawer-header {
     display: block;
     padding-bottom: 1.1rem;
@@ -2604,27 +2605,28 @@ img {
     opacity: 0.85;
   }
 
-  /* Navigation Links */
-  .nav-menu .nav-links {
+  /* Drawer Navigation Links */
+  .drawer-nav-links {
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
     width: 100%;
     margin-bottom: 1.25rem;
+    padding: 0;
   }
 
-  .nav-menu .nav-links li {
+  .drawer-nav-links li {
     width: 100%;
   }
 
-  .nav-menu .nav-link {
+  .drawer-nav-link {
     font-size: 1.05rem;
     font-family: var(--font-serif-heading);
     font-weight: 600;
     padding: 0.6rem 0.75rem;
     color: #ded9d2;
     border-radius: 8px;
-    border-bottom: none;
     background: rgba(255, 255, 255, 0.02);
     display: flex;
     align-items: center;
@@ -2633,8 +2635,8 @@ img {
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .nav-menu .nav-link:hover,
-  .nav-menu .nav-link:active {
+  .drawer-nav-link:hover,
+  .drawer-nav-link:active {
     background: rgba(179, 146, 78, 0.12);
     color: #cba358;
     padding-left: 1rem;
@@ -2659,32 +2661,51 @@ img {
     font-weight: 700;
   }
 
-  .nav-menu .has-dropdown .nav-dropdown {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    background: rgba(255, 255, 255, 0.03);
-    border: none;
-    border-left: 2px solid var(--brand-primary);
-    box-shadow: none;
-    padding: 0.45rem 0 0.45rem 1.1rem;
-    margin-top: 0.35rem;
+  /* Drawer Dropdown Item */
+  .drawer-dropdown-item {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .drawer-dropdown-header {
+    font-size: 1.05rem;
+    font-family: var(--font-serif-heading);
+    font-weight: 600;
+    padding: 0.6rem 0.75rem;
+    color: #ded9d2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .drawer-dropdown-header:hover {
+    color: #cba358;
+  }
+
+  .drawer-sublinks {
+    list-style: none;
+    padding: 0.35rem 0 0.5rem 1.25rem;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 0.45rem;
-    border-radius: 6px;
+    border-left: 2px solid var(--brand-primary);
+    margin-left: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
-  .nav-menu .has-dropdown .nav-dropdown li a {
+  .drawer-sublinks li a {
     font-size: 0.95rem;
-    padding: 0.3rem 0;
+    padding: 0.25rem 0;
     color: #b5b0a8;
     display: block;
     transition: color 0.2s ease;
   }
 
-  .nav-menu .has-dropdown .nav-dropdown li a:hover {
+  .drawer-sublinks li a:hover {
     color: var(--brand-primary);
   }
 

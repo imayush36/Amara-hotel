@@ -171,21 +171,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
 
   const mobileToggle = document.getElementById('mobile-menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
+  const mobileDrawer = document.getElementById('mobile-nav-drawer');
   const drawerCloseBtn = document.getElementById('drawer-close-btn');
   const drawerBackdrop = document.getElementById('mobile-drawer-backdrop');
 
   function openMobileDrawer() {
-    if (!navMenu) return;
-    navMenu.classList.add('mobile-open');
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.add('drawer-open');
     if (mobileToggle) mobileToggle.classList.add('open');
     if (drawerBackdrop) drawerBackdrop.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMobileDrawer() {
-    if (!navMenu) return;
-    navMenu.classList.remove('mobile-open');
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.remove('drawer-open');
     if (mobileToggle) mobileToggle.classList.remove('open');
     if (drawerBackdrop) drawerBackdrop.classList.remove('active');
     document.body.style.overflow = '';
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileToggle) {
     mobileToggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (navMenu && navMenu.classList.contains('mobile-open')) {
+      if (mobileDrawer && mobileDrawer.classList.contains('drawer-open')) {
         closeMobileDrawer();
       } else {
         openMobileDrawer();
@@ -213,11 +213,22 @@ document.addEventListener('DOMContentLoaded', () => {
     drawerBackdrop.addEventListener('click', closeMobileDrawer);
   }
 
-  document.querySelectorAll('.nav-menu a').forEach(link => {
+  // Close drawer on clicking links
+  document.querySelectorAll('.mobile-nav-drawer a').forEach(link => {
     link.addEventListener('click', () => {
       closeMobileDrawer();
     });
   });
+
+  // Toggle drawer rooms dropdown on mobile if desired
+  const drawerDropdownHeader = document.querySelector('.drawer-dropdown-header');
+  const drawerSublinks = document.querySelector('.drawer-sublinks');
+  if (drawerDropdownHeader && drawerSublinks) {
+    drawerDropdownHeader.addEventListener('click', () => {
+      const isVisible = drawerSublinks.style.display === 'flex';
+      drawerSublinks.style.display = isVisible ? 'none' : 'flex';
+    });
+  }
 
   // ==========================================
   // 5. ROOMS FILTER TABS
