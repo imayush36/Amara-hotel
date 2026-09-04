@@ -167,27 +167,57 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 4. MOBILE NAVIGATION MENU
+  // 4. MOBILE NAVIGATION MENU & LUXURY SIDEBAR DRAWER
   // ==========================================
 
   const mobileToggle = document.getElementById('mobile-menu-toggle');
   const navMenu = document.getElementById('nav-menu');
+  const drawerCloseBtn = document.getElementById('drawer-close-btn');
+  const drawerBackdrop = document.getElementById('mobile-drawer-backdrop');
 
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('mobile-open');
-      mobileToggle.classList.toggle('open');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
+  function openMobileDrawer() {
+    if (!navMenu) return;
+    navMenu.classList.add('mobile-open');
+    if (mobileToggle) mobileToggle.classList.add('open');
+    if (drawerBackdrop) drawerBackdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('mobile-open');
-        mobileToggle.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+  function closeMobileDrawer() {
+    if (!navMenu) return;
+    navMenu.classList.remove('mobile-open');
+    if (mobileToggle) mobileToggle.classList.remove('open');
+    if (drawerBackdrop) drawerBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (navMenu && navMenu.classList.contains('mobile-open')) {
+        closeMobileDrawer();
+      } else {
+        openMobileDrawer();
+      }
     });
   }
+
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMobileDrawer();
+    });
+  }
+
+  if (drawerBackdrop) {
+    drawerBackdrop.addEventListener('click', closeMobileDrawer);
+  }
+
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileDrawer();
+    });
+  });
 
   // ==========================================
   // 5. ROOMS FILTER TABS
