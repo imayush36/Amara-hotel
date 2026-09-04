@@ -26,13 +26,28 @@
 </head>
 <body>
 
-  <!-- Floating WhatsApp Quick Connect Button -->
-  <a href="https://api.whatsapp.com/send?phone=+917752946667&text=Hello%20Amara%20Hotel,%20I%20would%20like%20to%20inquire%20about%20a%20booking." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-cursor="WHATSAPP">
-    <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
-      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.771.82 2.791.82 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.485-4.484 9.969-9.969 9.969-1.748 0-3.383-.454-4.81-1.246l-5.221 1.339 1.385-5.074c-.886-1.488-1.393-3.218-1.393-5.064 0-5.485 4.484-9.969 9.969-9.969 5.485 0 9.969 4.484 9.969 9.969zm-4.708 3.518c-.258-.129-1.527-.754-1.764-.84-.236-.086-.408-.129-.58.129-.172.258-.667.84-.817 1.012-.15.172-.3.193-.558.064-.258-.129-1.089-.402-2.074-1.28-.767-.684-1.285-1.529-1.436-1.787-.15-.258-.016-.397.113-.526.116-.115.258-.3.387-.45.129-.151.172-.258.258-.43.086-.172.043-.323-.021-.452-.064-.129-.58-1.398-.795-1.914-.209-.503-.422-.434-.58-.442-.15-.008-.322-.01-.494-.01-.172 0-.451.064-.687.323-.236.258-.902.882-.902 2.15 0 1.269.924 2.495 1.053 2.667.129.172 1.819 2.778 4.407 3.896.616.266 1.097.425 1.472.544.619.197 1.182.169 1.627.103.496-.074 1.527-.624 1.742-1.226.215-.602.215-1.118.151-1.226-.065-.107-.236-.172-.494-.301z"/>
-    </svg>
-    <span class="whatsapp-tooltip">Chat with Concierge</span>
-  </a>
+  <!-- Floating Actions Right Stack: Book Room Pill (Above) + WhatsApp Float (Below) -->
+  <div class="floating-right-stack" id="floating-right-stack">
+    <!-- Floating Book Room Pill (Appears on scroll directly above WhatsApp) -->
+    <a href="#reservation" class="floating-book-pill" id="floating-book-pill" data-cursor="RESERVE" title="Reserve a Room">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <span>Book Room</span>
+      <span class="pill-dot"></span>
+    </a>
+
+    <!-- Floating WhatsApp Quick Connect Button -->
+    <a href="https://api.whatsapp.com/send?phone=+917752946667&text=Hello%20Amara%20Hotel,%20I%20would%20like%20to%20inquire%20about%20a%20booking." class="whatsapp-float" id="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-cursor="WHATSAPP">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.771.82 2.791.82 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.485-4.484 9.969-9.969 9.969-1.748 0-3.383-.454-4.81-1.246l-5.221 1.339 1.385-5.074c-.886-1.488-1.393-3.218-1.393-5.064 0-5.485 4.484-9.969 9.969-9.969 5.485 0 9.969 4.484 9.969 9.969zm-4.708 3.518c-.258-.129-1.527-.754-1.764-.84-.236-.086-.408-.129-.58.129-.172.258-.667.84-.817 1.012-.15.172-.3.193-.558.064-.258-.129-1.089-.402-2.074-1.28-.767-.684-1.285-1.529-1.436-1.787-.15-.258-.016-.397.113-.526.116-.115.258-.3.387-.45.129-.151.172-.258.258-.43.086-.172.043-.323-.021-.452-.064-.129-.58-1.398-.795-1.914-.209-.503-.422-.434-.58-.442-.15-.008-.322-.01-.494-.01-.172 0-.451.064-.687.323-.236.258-.902.882-.902 2.15 0 1.269.924 2.495 1.053 2.667.129.172 1.819 2.778 4.407 3.896.616.266 1.097.425 1.472.544.619.197 1.182.169 1.627.103.496-.074 1.527-.624 1.742-1.226.215-.602.215-1.118.151-1.226-.065-.107-.236-.172-.494-.301z"/>
+      </svg>
+      <span class="whatsapp-tooltip">Chat with Concierge</span>
+    </a>
+  </div>
 
   <!-- Header & Navigation Bar -->
   <header class="site-header" id="site-header">
@@ -49,8 +64,18 @@
           </div>
         </a>
 
-        <!-- Desktop Navigation Links (Exact replica with 'Restaurant' in place of Banquet Hall) -->
+        <!-- Navigation Menu (Desktop links & Mobile Luxury Drawer) -->
         <div class="nav-menu" id="nav-menu">
+          <div class="mobile-drawer-header">
+            <div class="drawer-brand">
+              <span class="drawer-monogram">AH</span>
+              <div>
+                <span class="drawer-title">AMARA HOTEL</span>
+                <span class="drawer-subtitle">GORAKHPUR · LUXURY REDEFINED</span>
+              </div>
+            </div>
+          </div>
+
           <ul class="nav-links">
             <li><a href="#home" class="nav-link" data-cursor="HOME">Home</a></li>
             <li class="has-dropdown">
@@ -69,11 +94,28 @@
             <li><a href="#about" class="nav-link" data-cursor="ABOUT">About</a></li>
             <li><a href="#contact" class="nav-link" data-cursor="CONTACT">Contact</a></li>
           </ul>
+
+          <div class="mobile-drawer-footer">
+            <a href="#reservation" class="btn btn-brand btn-full mobile-drawer-reserve-btn" data-cursor="RESERVE">
+              <span>Book Your Stay</span>
+              <span>→</span>
+            </a>
+            <div class="mobile-drawer-contacts">
+              <a href="tel:+917752946667" class="drawer-contact-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>+91 7752946667</span>
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=+917752946667&text=Hello%20Amara%20Hotel,%20I%20would%20like%20to%20inquire%20about%20a%20booking." target="_blank" rel="noopener noreferrer" class="drawer-contact-item drawer-whatsapp-link">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.771.82 2.791.82 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.485-4.484 9.969-9.969 9.969-1.748 0-3.383-.454-4.81-1.246l-5.221 1.339 1.385-5.074c-.886-1.488-1.393-3.218-1.393-5.064 0-5.485 4.484-9.969 9.969-9.969 5.485 0 9.969 4.484 9.969 9.969zm-4.708 3.518c-.258-.129-1.527-.754-1.764-.84-.236-.086-.408-.129-.58.129-.172.258-.667.84-.817 1.012-.15.172-.3.193-.558.064-.258-.129-1.089-.402-2.074-1.28-.767-.684-1.285-1.529-1.436-1.787-.15-.258-.016-.397.113-.526.116-.115.258-.3.387-.45.129-.151.172-.258.258-.43.086-.172.043-.323-.021-.452-.064-.129-.58-1.398-.795-1.914-.209-.503-.422-.434-.58-.442-.15-.008-.322-.01-.494-.01-.172 0-.451.064-.687.323-.236.258-.902.882-.902 2.15 0 1.269.924 2.495 1.053 2.667.129.172 1.819 2.778 4.407 3.896.616.266 1.097.425 1.472.544.619.197 1.182.169 1.627.103.496-.074 1.527-.624 1.742-1.226.215-.602.215-1.118.151-1.226-.065-.107-.236-.172-.494-.301z"/></svg>
+                <span>WhatsApp Concierge</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- Right Quick Actions -->
         <div class="nav-actions">
-          <!-- Direct Reservation CTA -->
+          <!-- Direct Reservation CTA (Desktop Only) -->
           <a href="#reservation" class="btn btn-brand nav-reserve-btn" data-cursor="RESERVE">
             <span>Reservation</span>
             <span>→</span>
@@ -1233,19 +1275,13 @@
   <!-- TOAST CONTAINER -->
   <div class="toast-container" id="toast-container"></div>
 
-  <!-- FLOATING SCROLL ACTIONS (BACK TO TOP & DIRECT BOOK) -->
-  <div class="floating-scroll-actions" id="floating-scroll-actions">
-    <button class="floating-top-btn" id="floating-top-btn" aria-label="Scroll to top" title="Scroll to top" data-cursor="TOP">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <path d="M18 15l-6-6-6 6"/>
-      </svg>
-      <span>TOP</span>
-    </button>
-    <a href="#reservation" class="floating-book-pill" data-cursor="RESERVE">
-      <span>Book Room</span>
-      <span class="pill-dot"></span>
-    </a>
-  </div>
+  <!-- FLOATING BACK TO TOP BUTTON (Bottom Left) -->
+  <button class="floating-top-btn" id="floating-top-btn" aria-label="Scroll to top" title="Scroll to top" data-cursor="TOP">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+    <span>TOP</span>
+  </button>
 
   <!-- FOOTER -->
   <footer class="site-footer">

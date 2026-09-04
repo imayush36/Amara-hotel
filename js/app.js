@@ -470,42 +470,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof ScrollTrigger === 'undefined') return;
 
-    // Header Pinning & Back to Top visibility
+    // Header Pinning & Back to Top / Floating Book Room visibility
     const header = document.getElementById('site-header');
-    const floatingActions = document.getElementById('floating-scroll-actions');
+    const floatingBookPill = document.getElementById('floating-book-pill');
     const floatingTopBtn = document.getElementById('floating-top-btn');
+
+    function updateFloatingState(currentScrollY, direction = 1) {
+      if (header) {
+        if (currentScrollY > 100) {
+          header.classList.add('header-scrolled');
+          if (direction === 1 && currentScrollY > 250) {
+            header.classList.add('header-unpinned');
+            header.classList.remove('header-pinned');
+          } else if (direction === -1) {
+            header.classList.add('header-pinned');
+            header.classList.remove('header-unpinned');
+          }
+        } else {
+          header.classList.remove('header-scrolled', 'header-unpinned', 'header-pinned');
+        }
+      }
+
+      const isScrolledPast = currentScrollY > 300;
+      if (floatingBookPill) {
+        floatingBookPill.classList.toggle('visible', isScrolledPast);
+      }
+      if (floatingTopBtn) {
+        floatingTopBtn.classList.toggle('visible', isScrolledPast);
+      }
+    }
 
     ScrollTrigger.create({
       start: 0,
       end: 'max',
       onUpdate: (self) => {
-        const currentScrollY = self.scroll();
-        const direction = self.direction;
-
-        if (header) {
-          if (currentScrollY > 100) {
-            header.classList.add('header-scrolled');
-            if (direction === 1 && currentScrollY > 250) {
-              header.classList.add('header-unpinned');
-              header.classList.remove('header-pinned');
-            } else if (direction === -1) {
-              header.classList.add('header-pinned');
-              header.classList.remove('header-unpinned');
-            }
-          } else {
-            header.classList.remove('header-scrolled', 'header-unpinned', 'header-pinned');
-          }
-        }
-
-        if (floatingActions) {
-          if (currentScrollY > 350) {
-            floatingActions.classList.add('visible');
-          } else {
-            floatingActions.classList.remove('visible');
-          }
-        }
+        updateFloatingState(self.scroll(), self.direction);
       }
     });
+
+    window.addEventListener('scroll', () => {
+      updateFloatingState(window.scrollY);
+    }, { passive: true });
 
     if (floatingTopBtn) {
       floatingTopBtn.addEventListener('click', (e) => {
