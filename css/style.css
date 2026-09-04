@@ -612,9 +612,11 @@ img {
   background: var(--brand-primary);
 }
 
+.mobile-drawer-backdrop,
+.mobile-nav-drawer,
 .mobile-drawer-header,
 .mobile-drawer-footer {
-  display: none;
+  display: none !important;
 }
 
 /* ==========================================================================
@@ -2498,7 +2500,7 @@ img {
 
   /* Mobile Drawer Header */
   .mobile-drawer-header {
-    display: block;
+    display: block !important;
     padding-bottom: 1.1rem;
     margin-bottom: 1rem;
     border-bottom: 1px solid rgba(179, 146, 78, 0.2);
@@ -2711,7 +2713,7 @@ img {
 
   /* Drawer Footer */
   .mobile-drawer-footer {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: 0.85rem;
     padding-top: 1.1rem;
