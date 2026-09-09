@@ -78,6 +78,7 @@
     <!-- Drawer Navigation Links -->
     <ul class="drawer-nav-links">
       <li><a href="#home" class="drawer-nav-link"><span>Home</span><span class="drawer-arrow">›</span></a></li>
+      <li><a href="#experience" class="drawer-nav-link"><span>Experience Walkthrough</span><span class="drawer-arrow">›</span></a></li>
       <li class="drawer-dropdown-item">
         <div class="drawer-dropdown-header">
           <span>Rooms & Suites</span>
@@ -152,6 +153,7 @@
         <div class="desktop-nav-menu" id="desktop-nav-menu">
           <ul class="nav-links">
             <li><a href="#home" class="nav-link" data-cursor="HOME">Home</a></li>
+            <li><a href="#experience" class="nav-link" data-cursor="EXPERIENCE">Experience</a></li>
             <li class="has-dropdown">
               <a href="#rooms" class="nav-link" data-cursor="ROOMS">Rooms ▾</a>
               <ul class="nav-dropdown">
@@ -189,9 +191,19 @@
     </nav>
   </header>
 
-  <!-- GRAND EDITORIAL HERO SECTION -->
+  <!-- GRAND EDITORIAL HERO SECTION WITH 24/7 BACKGROUND VIDEO -->
   <section class="hero-section" id="home">
-    <div class="container">
+    <!-- Full Background 24/7 Live Video & Ambient Overlays -->
+    <div class="hero-bg-video-wrap">
+      <video class="hero-bg-video" autoplay loop muted playsinline poster="assets/images/facade.jpg">
+        <source src="assets/experience.mp4" type="video/mp4">
+        <source src="assets/AMARA1-copy(1).mp4" type="video/mp4">
+      </video>
+      <div class="hero-bg-overlay"></div>
+      <div class="hero-bg-gradient-bottom"></div>
+    </div>
+
+    <div class="container hero-content-container">
       <div class="hero-editorial-wrap">
         
         <!-- Hero Header Block -->
@@ -211,7 +223,7 @@
               <span>Book Your Stay</span>
               <span class="btn-arrow">→</span>
             </a>
-            <a href="#rooms" class="btn btn-outline-dark btn-lg" data-cursor="ROOMS">
+            <a href="#rooms" class="btn btn-outline-light btn-lg" data-cursor="ROOMS">
               <span>Explore Rooms</span>
             </a>
           </div>
@@ -255,35 +267,26 @@
           </div>
         </div>
 
-        <!-- Hero Architectural Viewport Image -->
-        <div class="hero-cinematic-viewport" data-tilt data-cursor="VIEW">
-          <img src="assets/images/facade.jpg" alt="Amara Hotel Façade & Entrance" class="cover-hero-img">
-          <div class="hero-frame-vignette"></div>
-          
-          <div class="hero-floating-details">
-            <div class="hero-stat-badge">
-              <span class="stat-number">4.9</span>
-              <span class="stat-label">★ Google Rating</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat-badge">
-              <span class="stat-number">25000</span>
-              <span class="stat-label">Happy Guests</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat-badge">
-              <span class="stat-number">100%</span>
-              <span class="stat-label">Pure Comfort</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat-badge">
-              <span class="stat-number">24/7</span>
-              <span class="stat-label">Room Service</span>
-            </div>
+        <!-- Hero Floating Badges Bar -->
+        <div class="hero-floating-details-bar">
+          <div class="hero-stat-badge">
+            <span class="stat-number">4.9</span>
+            <span class="stat-label">★ Google Rating</span>
           </div>
-
-          <div class="cover-overlay-tag">
-            <span>PREMIER DESTINATION · MEDICAL COLLEGE ROAD, GORAKHPUR</span>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-badge">
+            <span class="stat-number">25000+</span>
+            <span class="stat-label">Happy Guests</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-badge">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Pure Comfort</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-badge">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Room Service</span>
           </div>
         </div>
 
@@ -313,6 +316,164 @@
       <span class="ticker-item">HN. SINGH CHAURAHA</span><span class="ticker-sep">✦</span>
     </div>
   </div>
+
+  <!-- CINEMATIC FRAME-BY-FRAME SCROLL EXPERIENCE SECTION -->
+  <section class="scroll-experience-section" id="experience">
+    <div class="scroll-experience-header container">
+      <div class="section-header text-center">
+        <span class="section-kicker">CINEMATIC SCROLL WALKTHROUGH</span>
+        <h2 class="section-title">The Amara Experience</h2>
+        <p class="section-lead">
+          Scroll down to explore our luxury boutique spaces frame by frame — from grand façade arrival to private master suites.
+        </p>
+      </div>
+    </div>
+
+    <div class="scroll-experience-pin-container" id="experience-pin-container">
+      
+      <!-- Sticky Experience Viewport -->
+      <div class="experience-sticky-stage" id="experience-sticky-stage">
+        
+        <!-- Experience Ambient Dynamic Lighting -->
+        <div class="experience-ambient-glow"></div>
+        
+        <!-- Frame Sequence Stage Canvas & Layers -->
+        <div class="experience-frame-viewport">
+          
+          <!-- High Performance HTML5 Canvas Sequence Renderer -->
+          <canvas id="experience-canvas" class="experience-canvas"></canvas>
+
+          <!-- Background Frame Layers for instant fallback & smooth blending -->
+          <div class="frame-layers-wrap" id="frame-layers-wrap">
+            <div class="frame-layer active" data-frame="0" style="background-image: url('assets/images/facade.jpg');"></div>
+            <div class="frame-layer" data-frame="1" style="background-image: url('assets/images/compositor.jpg');"></div>
+            <div class="frame-layer" data-frame="2" style="background-image: url('assets/images/press_hall.jpg');"></div>
+            <div class="frame-layer" data-frame="3" style="background-image: url('assets/images/bindery_suite.jpg');"></div>
+            <div class="frame-layer" data-frame="4" style="background-image: url('assets/images/courtyard.jpg');"></div>
+          </div>
+          
+          <!-- Cinematic Vignette & Lighting Mask -->
+          <div class="experience-vignette-overlay"></div>
+          
+          <!-- Top HUD Header -->
+          <div class="experience-hud-header">
+            <div class="experience-badge">
+              <span class="hud-pulse-dot"></span>
+              <span>THE AMARA JOURNEY · FRAME BY FRAME</span>
+            </div>
+            
+            <div class="experience-frame-counter">
+              <span class="counter-label">FRAME</span>
+              <span class="counter-current" id="hud-current-frame">01</span>
+              <span class="counter-slash">/</span>
+              <span class="counter-total">05</span>
+            </div>
+          </div>
+
+          <!-- Floating Frame Story Cards (Scrubbed on Scroll) -->
+          <div class="experience-story-cards-wrap" id="experience-story-cards">
+            
+            <!-- Story Card 1 -->
+            <div class="story-card active" data-story="0">
+              <div class="story-tag">01 · ARRIVAL & FAÇADE</div>
+              <h3 class="story-title">The Grand Entrance</h3>
+              <p class="story-desc">Step into Gorakhpur's finest boutique sanctuary. An iconic architectural landmark on Medical College Road offering regal hospitality.</p>
+              <div class="story-meta">
+                <span>📍 HN. Singh Chauraha</span>
+                <span>✦ 4-Star Boutique Comfort</span>
+              </div>
+            </div>
+
+            <!-- Story Card 2 -->
+            <div class="story-card" data-story="1">
+              <div class="story-tag">02 · SANCTUARY</div>
+              <h3 class="story-title">Deluxe Accommodation</h3>
+              <p class="story-desc">Plush ergonomic bedding, smart climate control, artisan workspaces, and designer en-suite bathrooms crafted for tranquil repose.</p>
+              <div class="story-meta">
+                <span>🛏️ Queen & King Beds</span>
+                <span>📶 100 Mbps Free Wi-Fi</span>
+              </div>
+            </div>
+
+            <!-- Story Card 3 -->
+            <div class="story-card" data-story="2">
+              <div class="story-tag">03 · CULINARY EXCELLENCE</div>
+              <h3 class="story-title">Dinner Bell Restaurant</h3>
+              <p class="story-desc">Indulge in artisanal North Indian gravies, Awadhi kebabs, Chinese woks, and handcrafted mocktails in an ambient dining salon.</p>
+              <div class="story-meta">
+                <span>🍳 Breakfast Buffet</span>
+                <span>🛎️ 24/7 In-Room Dining</span>
+              </div>
+            </div>
+
+            <!-- Story Card 4 -->
+            <div class="story-card" data-story="3">
+              <div class="story-tag">04 · ROYAL LIVING</div>
+              <h3 class="story-title">Master Suite Splendor</h3>
+              <p class="story-desc">Separate drawing room salon, deep soaking bathtubs, 55" 4K Smart TV, and dedicated concierge care for VIP guests.</p>
+              <div class="story-meta">
+                <span>🛋️ Independent Drawing Salon</span>
+                <span>🛁 Soaking Bathtub</span>
+              </div>
+            </div>
+
+            <!-- Story Card 5 -->
+            <div class="story-card" data-story="4">
+              <div class="story-tag">05 · CONNECTIVITY & RETAIL</div>
+              <h3 class="story-title">Shopping Arcade & Prime Hub</h3>
+              <p class="story-desc">Direct in-house shopping arcade, effortless valet parking, and 1-minute proximity to Radisson Blu and city transit corridors.</p>
+              <div class="story-meta">
+                <span>🛍️ Shopping Arcade</span>
+                <span>⚡ 15 Min to Airport</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom HUD & Interactive Timeline Scrubber -->
+          <div class="experience-hud-footer">
+            
+            <div class="experience-scrubber-track" id="experience-scrubber-track">
+              <div class="experience-scrubber-fill" id="experience-scrubber-fill"></div>
+              <div class="experience-scrubber-thumb" id="experience-scrubber-thumb"></div>
+            </div>
+
+            <div class="experience-timeline-pills">
+              <button class="timeline-pill active" data-frame-index="0" data-cursor="FRAME 1">
+                <span class="pill-number">01</span>
+                <span class="pill-title">Façade</span>
+              </button>
+              <button class="timeline-pill" data-frame-index="1" data-cursor="FRAME 2">
+                <span class="pill-number">02</span>
+                <span class="pill-title">Deluxe</span>
+              </button>
+              <button class="timeline-pill" data-frame-index="2" data-cursor="FRAME 3">
+                <span class="pill-number">03</span>
+                <span class="pill-title">Dinner Bell</span>
+              </button>
+              <button class="timeline-pill" data-frame-index="3" data-cursor="FRAME 4">
+                <span class="pill-number">04</span>
+                <span class="pill-title">Master Suite</span>
+              </button>
+              <button class="timeline-pill" data-frame-index="4" data-cursor="FRAME 5">
+                <span class="pill-number">05</span>
+                <span class="pill-title">Arcade</span>
+              </button>
+            </div>
+
+            <div class="experience-scroll-hint">
+              <span class="scroll-mouse-icon">
+                <span class="scroll-mouse-wheel"></span>
+              </span>
+              <span>SCROLL DOWN TO ADVANCE FRAMES</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT & PHILOSOPHY SECTION -->
   <section class="about-section" id="about">

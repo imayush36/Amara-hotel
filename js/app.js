@@ -618,6 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'power3.out'
     });
 
+    // Dining Section Reveal
     gsap.from('.dining-content-col', {
       scrollTrigger: {
         trigger: '.dining-section',
@@ -628,6 +629,261 @@ document.addEventListener('DOMContentLoaded', () => {
       opacity: 0,
       duration: 0.9,
       ease: 'power3.out'
+    });
+  }
+
+  // ==========================================
+  // 10.4. HERO SECTION 24/7 LIVE VIDEO PLAYBACK
+  // ==========================================
+
+  const heroVideo = document.querySelector('.hero-bg-video, .cover-hero-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.playsInline = true;
+    heroVideo.setAttribute('muted', '');
+    heroVideo.setAttribute('playsinline', '');
+    
+    function tryPlayHeroVideo() {
+      const playPromise = heroVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          document.addEventListener('click', () => heroVideo.play(), { once: true });
+          document.addEventListener('touchstart', () => heroVideo.play(), { once: true });
+          document.addEventListener('scroll', () => heroVideo.play(), { once: true });
+        });
+      }
+    }
+
+    tryPlayHeroVideo();
+    window.addEventListener('focus', tryPlayHeroVideo);
+  }
+
+  // ==========================================
+  // 10.5. CINEMATIC FRAME-BY-FRAME SCROLL EXPERIENCE ENGINE
+  // ==========================================
+
+  let isFrameExperienceInitialized = false;
+
+  function initFrameByFrameScrollExperience() {
+    if (isFrameExperienceInitialized) return;
+    isFrameExperienceInitialized = true;
+
+    const pinContainer = document.getElementById('experience-pin-container');
+    if (!pinContainer) return;
+
+    const canvas = document.getElementById('experience-canvas');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    const frameLayers = document.querySelectorAll('.frame-layer');
+    const storyCards = document.querySelectorAll('.story-card');
+    const timelinePills = document.querySelectorAll('.timeline-pill');
+    const hudCurrentFrame = document.getElementById('hud-current-frame');
+    const scrubberFill = document.getElementById('experience-scrubber-fill');
+
+    const FRAME_SOURCES = [
+      'assets/images/facade.jpg',
+      'assets/images/compositor.jpg',
+      'assets/images/press_hall.jpg',
+      'assets/images/bindery_suite.jpg',
+      'assets/images/courtyard.jpg'
+    ];
+    const totalFrames = FRAME_SOURCES.length;
+
+    // Preload all 5 high-res frame images into memory
+    const loadedImages = [];
+    let imagesLoadedCount = 0;
+
+    FRAME_SOURCES.forEach((src, index) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        imagesLoadedCount++;
+        loadedImages[index] = img;
+        if (index === 0 || imagesLoadedCount === totalFrames) {
+          renderCanvasFrame(currentProgress);
+        }
+      };
+      img.onerror = () => {
+        console.warn(`Could not load frame image: ${src}`);
+      };
+      loadedImages[index] = img;
+    });
+
+    let targetProgress = 0;
+    let currentProgress = 0;
+    let currentActiveIndex = -1;
+    let isTicking = false;
+
+    // Resize Canvas to device pixel ratio for crisp rendering
+    function resizeCanvas() {
+      if (!canvas || !ctx) return;
+      const rect = canvas.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+      
+      renderCanvasFrame(currentProgress);
+    }
+
+    // High performance Draw Cover on Canvas with Micro-Camera Pan & Zoom
+    function drawCoverImage(image, scale = 1.0, alpha = 1.0) {
+      if (!ctx || !canvas || !image || !image.complete || image.naturalWidth === 0) return;
+
+      const cw = canvas.width;
+      const ch = canvas.height;
+      const iw = image.naturalWidth;
+      const ih = image.naturalHeight;
+
+      const hRatio = cw / iw;
+      const vRatio = ch / ih;
+      const ratio = Math.max(hRatio, vRatio) * scale;
+
+      const nw = iw * ratio;
+      const nh = ih * ratio;
+      const centerShiftX = (cw - nw) / 2;
+      const centerShiftY = (ch - nh) / 2;
+
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
+      ctx.drawImage(image, 0, 0, iw, ih, centerShiftX, centerShiftY, nw, nh);
+      ctx.restore();
+    }
+
+    // Render Canvas Frame with Smooth Cross-Dissolve & Zoom Physics
+    function renderCanvasFrame(p) {
+      if (!ctx || !canvas) return;
+
+      const exactPos = p * (totalFrames - 1);
+      const frameA = Math.floor(exactPos);
+      const frameB = Math.min(totalFrames - 1, frameA + 1);
+      const fraction = exactPos - frameA;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const imgA = loadedImages[frameA];
+      const imgB = loadedImages[frameB];
+
+      // Draw Base Frame A with slight zoom
+      if (imgA && imgA.complete && imgA.naturalWidth > 0) {
+        const scaleA = 1.0 + (fraction * 0.04);
+        drawCoverImage(imgA, scaleA, 1.0 - (fraction * 0.3));
+      }
+
+      // Blend Incoming Frame B with smooth cross-dissolve
+      if (imgB && imgB.complete && imgB.naturalWidth > 0 && fraction > 0.005) {
+        const scaleB = 1.04 - (fraction * 0.04);
+        drawCoverImage(imgB, scaleB, fraction);
+      }
+    }
+
+    // Update DOM UI elements (Cards, Pills, Scrubber, HUD)
+    function updateDOMStates(p) {
+      // 1. Scrubber fill width
+      if (scrubberFill) {
+        scrubberFill.style.width = `${(p * 100).toFixed(1)}%`;
+      }
+
+      const exactIndex = p * (totalFrames - 1);
+      const activeIdx = Math.min(totalFrames - 1, Math.round(exactIndex));
+
+      if (activeIdx !== currentActiveIndex) {
+        currentActiveIndex = activeIdx;
+
+        // Update Background CSS Layers (Fallback & sync)
+        frameLayers.forEach((layer, idx) => {
+          layer.classList.toggle('active', idx === activeIdx);
+        });
+
+        // Update Floating Story Narrative Cards
+        storyCards.forEach((card, idx) => {
+          card.classList.toggle('active', idx === activeIdx);
+        });
+
+        // Update Timeline Selector Pills
+        timelinePills.forEach((pill, idx) => {
+          pill.classList.toggle('active', idx === activeIdx);
+        });
+
+        // Update HUD Counter (01, 02, 03, 04, 05)
+        if (hudCurrentFrame) {
+          hudCurrentFrame.textContent = String(activeIdx + 1).padStart(2, '0');
+        }
+      }
+    }
+
+    // Smooth LERP Animation Loop (Apple-style inertia)
+    function animationLoop() {
+      const diff = targetProgress - currentProgress;
+      
+      if (Math.abs(diff) > 0.0005) {
+        currentProgress += diff * 0.16; // Fluid LERP smoothing factor
+        renderCanvasFrame(currentProgress);
+        updateDOMStates(currentProgress);
+        requestAnimationFrame(animationLoop);
+      } else {
+        currentProgress = targetProgress;
+        renderCanvasFrame(currentProgress);
+        updateDOMStates(currentProgress);
+        isTicking = false;
+      }
+    }
+
+    function requestProgressUpdate(p) {
+      targetProgress = Math.max(0, Math.min(1, p));
+      if (!isTicking) {
+        isTicking = true;
+        requestAnimationFrame(animationLoop);
+      }
+    }
+
+    // High-Precision Real-time Scroll Calculation
+    function calculateScrollProgress() {
+      const rect = pinContainer.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const totalScrollable = rect.height - viewportHeight;
+
+      if (totalScrollable <= 0) return;
+
+      const topOffset = 75; // sticky stage top
+      const scrolled = -(rect.top - topOffset);
+      const effectiveScrollable = totalScrollable - topOffset;
+      const progress = Math.max(0, Math.min(1, scrolled / effectiveScrollable));
+
+      requestProgressUpdate(progress);
+    }
+
+    window.addEventListener('scroll', calculateScrollProgress, { passive: true });
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      calculateScrollProgress();
+    }, { passive: true });
+
+    // Initial setup
+    setTimeout(() => {
+      resizeCanvas();
+      calculateScrollProgress();
+      updateDOMStates(0);
+    }, 50);
+
+    // Timeline Pills Direct Click Navigation
+    timelinePills.forEach((pill) => {
+      pill.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetIndex = parseInt(pill.getAttribute('data-frame-index') || '0', 10);
+        const rect = pinContainer.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const containerTop = rect.top + scrollTop;
+        const totalScrollable = rect.height - window.innerHeight;
+        const topOffset = 75;
+
+        const targetScrollY = containerTop + topOffset + (targetIndex / (totalFrames - 1)) * (totalScrollable - topOffset) + 2;
+
+        window.scrollTo({
+          top: targetScrollY,
+          behavior: 'smooth'
+        });
+      });
     });
   }
 
@@ -802,6 +1058,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize
   updateAllPriceTags();
   initGsapAnimations();
+  initFrameByFrameScrollExperience();
   init3DCardTilt();
   initMagneticButtons();
   initNearbyRadarInteractions();
