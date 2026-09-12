@@ -2420,7 +2420,7 @@ img {
    ========================================================================== */
 
 .site-footer {
-  padding: 5.5rem 0 2.5rem;
+  padding: 5.5rem 0 0;
   background: #0d0b09;
   color: #d1c6b5;
   border-top: 1px solid rgba(203, 163, 88, 0.25);
@@ -2430,7 +2430,7 @@ img {
   display: grid;
   grid-template-columns: 1.5fr 1.2fr 1fr;
   gap: 3.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .footer-brand-title {
