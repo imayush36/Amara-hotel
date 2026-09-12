@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeIconDark = document.getElementById('theme-icon-dark');
   const htmlRoot = document.documentElement;
 
-  const savedTheme = localStorage.getItem('ba_theme') || 'light';
+  const savedTheme = localStorage.getItem('ba_theme') || 'dark';
   htmlRoot.setAttribute('data-theme', savedTheme);
   updateThemeIcons(savedTheme);
 
