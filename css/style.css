@@ -141,7 +141,7 @@ img {
 
 .floating-right-stack {
   position: fixed;
-  bottom: 25px;
+  bottom: 65px;
   right: 25px;
   display: flex;
   flex-direction: column;
@@ -3206,7 +3206,7 @@ img {
 
   /* Floating Widgets */
   .floating-right-stack {
-    bottom: 18px;
+    bottom: 55px;
     right: 18px;
     gap: 10px;
   }
