@@ -19,55 +19,72 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentCurrency = 'INR';
 
   const ROOM_DATA = {
+    standard: {
+      id: 'standard',
+      name: 'Standard Room',
+      badge: 'Classic Comfort · 2 Guests',
+      priceINR: 1999,
+      bed: 'Queen Bed',
+      image: 'assets/images/standard_room.jpg',
+      description: 'A comfortable and elegantly appointed room offering cozy queen bedding, dedicated work space, high-speed Wi-Fi, air conditioning, and a modern en-suite bathroom.',
+      amenities: [
+        'High-speed complimentary Wi-Fi & Smart TV',
+        'Air Conditioning with climate control',
+        'Daily housekeeping & fresh toiletries',
+        'Electric kettle with complimentary tea/coffee kit',
+        'Modern en-suite bathroom with 24/7 hot water',
+        '24/7 concierge & front desk assistance'
+      ]
+    },
     deluxe: {
       id: 'deluxe',
-      name: 'Deluxe Room',
+      name: 'Delux Room',
       badge: 'Best Seller · 2 Guests',
       priceINR: 2499,
       bed: 'Queen Bed',
       image: 'assets/images/compositor.jpg',
-      description: 'Immerse yourself in comfort with our Deluxe Room, equipped with plush bedding, dedicated work desk, smart LED TV, tea/coffee maker, and modern en-suite bathroom.',
+      description: 'Immerse yourself in comfort with our Delux Room, equipped with plush bedding, dedicated work desk, smart LED TV, tea/coffee maker, and modern en-suite bathroom.',
       amenities: [
         'High-speed complimentary Wi-Fi & Smart TV',
-        '24/7 in-room dining from Dinner Bell Restaurant',
+        '24/7 in-room dining service',
         'Air Conditioning with climate control',
         'Daily housekeeping & premium toiletries',
         'Electric kettle with complimentary tea/coffee kit',
         'Dedicated ergonomic work desk & wardrobe'
       ]
     },
-    superdeluxe: {
-      id: 'superdeluxe',
-      name: 'Super Deluxe Room',
+    superior: {
+      id: 'superior',
+      name: 'Superior Room',
       badge: 'Featured · City View',
       priceINR: 3299,
       bed: 'King Bed',
-      image: 'assets/images/press_loft.jpg',
-      description: 'Experience elevated luxury with our spacious Super Deluxe Room. Featuring expansive glass windows overlooking Gorakhpur, king-sized mattress, cozy sitting area, and premium amenities.',
+      image: 'assets/images/superior_room.jpg',
+      description: 'Experience elevated luxury with our spacious Superior Room. Featuring expansive glass windows overlooking Gorakhpur, king-sized mattress, cozy sitting area, and premium amenities.',
       amenities: [
         'Expansive floor plan with luxury sitting lounge',
-        'Complimentary breakfast at Dinner Bell',
+        'Complimentary morning breakfast',
         'Rainfall shower with bespoke herbal amenities',
         'Mini refrigerator & electric kettle',
         '50" 4K Smart LED TV with satellite channels',
         'Express laundry & valet assistance'
       ]
     },
-    suite: {
-      id: 'suite',
-      name: 'Suite Room',
-      badge: 'Master Suite · Living Area',
-      priceINR: 4999,
+    clubking: {
+      id: 'clubking',
+      name: 'Club King Bed',
+      badge: 'Executive Club · Grand Living',
+      priceINR: 4499,
       bed: 'Grand King Bed',
-      image: 'assets/images/bindery_suite.jpg',
-      description: 'Our master Suite Room is the pinnacle of Amara Hotel indulgence. Offers an independent drawing salon with sofa set, private bedroom with master king bed, luxury bath, and 24/7 dedicated service.',
+      image: 'assets/images/club_room.jpg',
+      description: 'Our prestigious Club King Bed room offers generous living space, plush grand king mattress, executive seating salon, 55" 4K Smart TV, and VIP personalized care.',
       amenities: [
-        'Separate drawing room with plush sofa set',
+        'Grand King-size bed with orthopedic mattress',
+        'Independent executive seating salon',
         'Deep soaking bathtub & complimentary bathrobes',
-        'Priority table reservation at Dinner Bell',
+        'Priority table reservation at Amara Restaurant',
         'Complimentary morning breakfast buffet',
-        '55" 4K Smart TV in living & bedroom',
-        'Dedicated 24-hour concierge assistance'
+        '55" 4K Smart TV & dedicated 24-hour concierge'
       ]
     },
     twin: {
@@ -76,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Twin Beds · 2 Guests',
       priceINR: 2699,
       bed: '2 Single Beds',
-      image: 'assets/images/founders_room.jpg',
+      image: 'assets/images/founders_terrace.jpg',
       description: 'Ideal for colleagues, friends, or traveling pairs. Features two individual single beds with ergonomic mattresses, dedicated work space, high-speed Wi-Fi, and complete comfort amenities.',
       amenities: [
         'Twin comfortable beds with individual reading sconces',
@@ -272,10 +289,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalAmenities = document.getElementById('modal-room-amenities');
   const modalBookBtn = document.getElementById('modal-book-now-btn');
 
-  let selectedRoomForModal = 'deluxe';
+  let selectedRoomForModal = 'standard';
 
   function openRoomModal(roomId) {
-    const room = ROOM_DATA[roomId] || ROOM_DATA.deluxe;
+    const room = ROOM_DATA[roomId] || ROOM_DATA.standard;
     selectedRoomForModal = roomId;
 
     if (modalImg) modalImg.src = room.image;
@@ -684,7 +701,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'assets/images/compositor.jpg',
       'assets/images/press_hall.jpg',
       'assets/images/bindery_suite.jpg',
-      'assets/images/courtyard.jpg'
+      'assets/images/founders_terrace.jpg'
     ];
     const totalFrames = FRAME_SOURCES.length;
 
@@ -963,7 +980,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ROTATION_SEQUENCE = [
       'loc-temple',       // Top (12 o'clock)
       'loc-airport',      // Top-Right (1:30 o'clock)
-      'loc-radisson',     // Right (3 o'clock)
       'loc-mmmut',        // Far Right (3:30 o'clock)
       'loc-aiims',        // Bottom-Right (5 o'clock)
       'loc-noukavihar',   // Bottom (6 o'clock)
@@ -1052,7 +1068,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Default initial location
-    activateLocation('loc-radisson');
+    activateLocation('loc-temple');
   }
 
   // Initialize

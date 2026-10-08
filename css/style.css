@@ -1007,7 +1007,7 @@ img {
 
 .editorial-cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
@@ -1261,7 +1261,7 @@ img {
 }
 
 /* ==========================================================================
-   Dinner Bell & Dining Section
+   Dining Section
    ========================================================================== */
 
 .dining-section {
@@ -1376,9 +1376,10 @@ img {
 
 .spaces-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+  max-width: 780px;
+  margin: 3.5rem auto 0;
   gap: 2.5rem;
-  margin-top: 3.5rem;
 }
 
 .space-card {
