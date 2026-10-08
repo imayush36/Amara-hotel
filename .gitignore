@@ -33,3 +33,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# test screens & backups
+test_screen*.png
+*_backup.jpg
+*_old.jpg
+assets/images/amara_restaurant.jpg
+
