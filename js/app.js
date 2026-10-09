@@ -126,20 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
-
-    // Update reservation form rate options
-    const roomSelect = document.getElementById('res-room-select');
-    if (roomSelect) {
-      Array.from(roomSelect.options).forEach(opt => {
-        const rate = parseFloat(opt.getAttribute('data-rate'));
-        if (!isNaN(rate)) {
-          const roomName = opt.textContent.split('(')[0].trim();
-          opt.textContent = `${roomName} (${formatCurrency(rate)} / night)`;
-        }
-      });
-    }
-
-    calculateReservationTotal();
   }
 
   const currencySelector = document.getElementById('currency-selector');
@@ -298,7 +284,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalImg) modalImg.src = room.image;
     if (modalBadge) modalBadge.textContent = room.badge;
     if (modalTitle) modalTitle.textContent = room.name;
-    if (modalPrice) modalPrice.textContent = `${formatCurrency(room.priceINR)} / night`;
     if (modalDesc) modalDesc.textContent = room.description;
 
     if (modalAmenities) {
@@ -404,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const confirmCloseBtn = document.getElementById('confirm-modal-close-btn');
 
   function calculateReservationTotal() {
-    if (!resRoomSelect || !resSumTotal) return;
+    if (!resRoomSelect) return;
 
     let nights = parseInt(resNightsInput?.value || '2', 10);
     if (isNaN(nights) || nights < 1) nights = 1;
@@ -421,14 +406,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    const selectedOption = resRoomSelect.options[resRoomSelect.selectedIndex];
-    const baseRate = parseFloat(selectedOption?.getAttribute('data-rate') || '2499');
-    const totalINR = baseRate * nights;
-
     if (resSumNights) {
       resSumNights.textContent = `${nights} Night${nights > 1 ? 's' : ''} · 1 Room`;
     }
-    resSumTotal.textContent = formatCurrency(totalINR);
   }
 
   if (resRoomSelect) resRoomSelect.addEventListener('change', calculateReservationTotal);
@@ -441,23 +421,53 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const name = document.getElementById('res-fullname')?.value || 'Guest';
       const phone = document.getElementById('res-phone')?.value || '';
-      const room = resRoomSelect?.options[resRoomSelect.selectedIndex]?.text.split('(')[0].trim() || 'Deluxe Room';
-      const bookingId = '#BA-' + Math.floor(100000 + Math.random() * 900000);
+      const email = document.getElementById('res-email')?.value || '';
+      const room = resRoomSelect?.options[resRoomSelect.selectedIndex]?.text.split('(')[0].trim() || 'Standard Room';
+      const checkin = resCheckinInput?.value || '';
+      const checkout = resCheckoutInput?.value || '';
+      const guests = document.getElementById('res-guests')?.options[document.getElementById('res-guests')?.selectedIndex]?.text || '2 Adults';
+      const nights = resNightsInput?.value || '1';
+      const bookingId = '#AH-' + Math.floor(100000 + Math.random() * 900000);
+
+      // Pre-fill WhatsApp message with complete reservation details
+      let waText = `Hello Hotel Amara! I would like to book a stay.\n\n` +
+        `🏨 *RESERVATION DETAILS*\n` +
+        `• *Booking ID:* ${bookingId}\n` +
+        `• *Guest Name:* ${name}\n` +
+        `• *Phone / WhatsApp:* ${phone}\n`;
+      if (email) {
+        waText += `• *Email:* ${email}\n`;
+      }
+      waText += `• *Room Category:* ${room}\n` +
+        `• *Check-in Date:* ${checkin}\n` +
+        `• *Check-out Date:* ${checkout}\n` +
+        `• *Duration:* ${nights} Night${parseInt(nights, 10) > 1 ? 's' : ''}\n` +
+        `• *Guests:* ${guests}\n\n` +
+        `Please confirm my reservation and room availability. Thank you!`;
+
+      const whatsappUrl = `https://wa.me/917518884446?text=${encodeURIComponent(waText)}`;
 
       const confirmDesc = document.getElementById('confirm-desc-text');
       const confirmId = document.getElementById('confirm-booking-id');
+      const confirmWaBtn = document.getElementById('confirm-modal-wa-btn');
 
       if (confirmDesc) {
-        confirmDesc.innerHTML = `Thank you, <strong>${name}</strong>! Your reservation request for <strong>${room}</strong> has been received. Our concierge will contact you at <strong>${phone}</strong> on WhatsApp shortly.`;
+        confirmDesc.innerHTML = `Thank you, <strong>${name}</strong>! Your reservation request for <strong>${room}</strong> has been generated.<br><br>Opening <strong>WhatsApp</strong> on <strong>+91 7518884446</strong> to complete your booking directly with our front desk concierge.`;
       }
       if (confirmId) {
         confirmId.textContent = `BOOKING ID: ${bookingId}`;
+      }
+      if (confirmWaBtn) {
+        confirmWaBtn.href = whatsappUrl;
       }
 
       if (bookingConfirmModal) {
         bookingConfirmModal.classList.add('active');
       }
-      showToast(`Reservation request sent successfully! Booking ID: ${bookingId}`);
+      showToast(`Opening WhatsApp for booking confirmation...`);
+
+      // Open WhatsApp directly
+      window.open(whatsappUrl, '_blank');
     });
   }
 
