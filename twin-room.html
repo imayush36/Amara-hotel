@@ -37,19 +37,28 @@
   </div>
 
   <!-- Mobile Drawer Backdrop -->
-  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <div class="mobile-drawer-backdrop drawer-backdrop" id="mobile-drawer-backdrop"></div>
 
   <!-- Mobile Navigation Drawer -->
-  <aside class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
     <div class="mobile-drawer-header">
-      <div class="drawer-brand">
-        <span class="drawer-logo">AMARA HOTEL</span>
-        <div class="drawer-stars">★★★★</div>
+      <div class="drawer-header-row">
+        <div class="drawer-brand">
+          <span class="drawer-monogram">AH</span>
+          <div class="drawer-brand-text">
+            <span class="drawer-title">AMARA HOTEL</span>
+            <div class="drawer-stars">★★★★</div>
+            <span class="drawer-subtitle">GORAKHPUR · LUXURY</span>
+          </div>
+        </div>
+        <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close menu">✕</button>
       </div>
-      <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close menu">✕</button>
+      <div class="drawer-tagline">Experience 4-Star Boutique Elegance</div>
     </div>
 
-    <ul class="drawer-nav-list">
+    <div class="drawer-section-label">EXPLORE & STAY</div>
+
+    <ul class="drawer-nav-links drawer-nav-list">
       <li><a href="index.html#home" class="drawer-nav-link"><span>Home</span><span class="drawer-arrow">›</span></a></li>
       <li><a href="index.html#experience" class="drawer-nav-link"><span>Experience</span><span class="drawer-arrow">›</span></a></li>
       <li class="drawer-dropdown-item active">

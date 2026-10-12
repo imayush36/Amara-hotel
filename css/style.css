@@ -638,11 +638,13 @@ img {
   background: var(--brand-primary);
 }
 
-.mobile-drawer-backdrop,
-.mobile-nav-drawer,
-.mobile-drawer-header,
-.mobile-drawer-footer {
-  display: none !important;
+@media (min-width: 993px) {
+  .mobile-drawer-backdrop,
+  .mobile-nav-drawer,
+  .mobile-drawer-header,
+  .mobile-drawer-footer {
+    display: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -2513,7 +2515,8 @@ img {
 /* Tablets & Small Laptops (<= 1024px) */
 @media (max-width: 1024px) {
   /* Mobile Backdrop Overlay */
-  .mobile-drawer-backdrop {
+  .mobile-drawer-backdrop,
+  .drawer-backdrop {
     display: block;
     position: fixed;
     top: 0;
@@ -2529,7 +2532,8 @@ img {
     transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .mobile-drawer-backdrop.active {
+  .mobile-drawer-backdrop.active,
+  .drawer-backdrop.active {
     opacity: 1;
     pointer-events: auto;
   }
@@ -2568,7 +2572,8 @@ img {
     visibility: hidden;
   }
 
-  .mobile-nav-drawer.drawer-open {
+  .mobile-nav-drawer.drawer-open,
+  .mobile-nav-drawer.active {
     transform: translateX(0);
     pointer-events: auto;
     visibility: visible;
