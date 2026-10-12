@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badge: 'Best Seller · 2 Guests',
       priceINR: 2499,
       bed: 'Queen Bed',
-      image: 'assets/images/compositor.jpg',
+      image: 'assets/images/deluxe_room.jpg',
       description: 'Immerse yourself in comfort with our Delux Room, equipped with plush bedding, dedicated work desk, smart LED TV, tea/coffee maker, and modern en-suite bathroom.',
       amenities: [
         'High-speed complimentary Wi-Fi & Smart TV',
@@ -660,16 +660,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 10.4. HERO SECTION 24/7 LIVE VIDEO PLAYBACK
+  // 10.4. HERO SECTION 24/7 LIVE VIDEO PLAYBACK (RESPONSIVE DESKTOP & VERTICAL MOBILE)
   // ==========================================
 
-  const heroVideo = document.querySelector('.hero-bg-video, .cover-hero-video');
+  const heroVideo = document.getElementById('hero-bg-video') || document.querySelector('.hero-bg-video, .cover-hero-video');
   if (heroVideo) {
     heroVideo.muted = true;
     heroVideo.playsInline = true;
     heroVideo.setAttribute('muted', '');
     heroVideo.setAttribute('playsinline', '');
-    
+
+    const desktopVideoSrc = 'assets/experience.mp4';
+    const mobileVideoSrc = 'assets/images/Amara%20Hotal%20Web%20Vertical%20Video.mp4';
+
     function tryPlayHeroVideo() {
       const playPromise = heroVideo.play();
       if (playPromise !== undefined) {
@@ -681,8 +684,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    function syncHeroVideoSource() {
+      const isMobile = window.innerWidth <= 768 || (window.matchMedia && window.matchMedia('(max-width: 768px)').matches);
+      const targetSrc = isMobile ? mobileVideoSrc : desktopVideoSrc;
+      const current = heroVideo.currentSrc || heroVideo.getAttribute('src') || '';
+
+      const isCurrentlyMobile = current.includes('amara_vertical') || current.includes('Vertical');
+      const isCurrentlyDesktop = current.includes('experience') || current.includes('AMARA1');
+
+      if ((isMobile && !isCurrentlyMobile) || (!isMobile && !isCurrentlyDesktop)) {
+        heroVideo.src = targetSrc;
+        heroVideo.load();
+        tryPlayHeroVideo();
+      }
+    }
+
+    syncHeroVideoSource();
     tryPlayHeroVideo();
     window.addEventListener('focus', tryPlayHeroVideo);
+
+    let heroResizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(heroResizeTimer);
+      heroResizeTimer = setTimeout(syncHeroVideoSource, 200);
+    }, { passive: true });
   }
 
   // ==========================================
@@ -709,8 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const FRAME_SOURCES = [
       'assets/images/facade.jpg',
       'assets/images/compositor.jpg',
-      'assets/images/restaurant.jpg',
-      'assets/images/bindery_suite.jpg'
+      'assets/images/restaurant.jpg'
     ];
     const totalFrames = FRAME_SOURCES.length;
 

@@ -85,11 +85,11 @@
           <span class="drawer-chevron">▾</span>
         </div>
         <ul class="drawer-sublinks">
-          <li><a href="#room-standard">Standard</a></li>
-          <li><a href="#room-deluxe">Delux</a></li>
-          <li><a href="#room-superior">Superior</a></li>
-          <li><a href="#room-clubking">Club King Bed</a></li>
-          <li><a href="#room-twin">Twin</a></li>
+          <li><a href="standard-room.html">Standard Room</a></li>
+          <li><a href="deluxe-room.html">Delux Room</a></li>
+          <li><a href="superior-room.html">Superior Room</a></li>
+          <li><a href="club-king-room.html">Club King Bed</a></li>
+          <li><a href="twin-room.html">Twin Room</a></li>
         </ul>
       </li>
       <li><a href="#restaurant" class="drawer-nav-link"><span>Amara Restaurant</span><span class="drawer-arrow">›</span></a></li>
@@ -157,11 +157,11 @@
             <li class="has-dropdown">
               <a href="#rooms" class="nav-link" data-cursor="ROOMS">Rooms ▾</a>
               <ul class="nav-dropdown">
-                <li><a href="#room-standard">Standard</a></li>
-                <li><a href="#room-deluxe">Delux</a></li>
-                <li><a href="#room-superior">Superior</a></li>
-                <li><a href="#room-clubking">Club King Bed</a></li>
-                <li><a href="#room-twin">Twin</a></li>
+                <li><a href="standard-room.html">Standard Room</a></li>
+                <li><a href="deluxe-room.html">Delux Room</a></li>
+                <li><a href="superior-room.html">Superior Room</a></li>
+                <li><a href="club-king-room.html">Club King Bed</a></li>
+                <li><a href="twin-room.html">Twin Room</a></li>
               </ul>
             </li>
             <li><a href="#restaurant" class="nav-link" data-cursor="RESTAURANT">Amara Restaurant</a></li>
@@ -195,10 +195,19 @@
   <section class="hero-section" id="home">
     <!-- Full Background 24/7 Live Video & Ambient Overlays -->
     <div class="hero-bg-video-wrap">
-      <video class="hero-bg-video" autoplay loop muted playsinline poster="assets/images/facade.jpg">
+      <video class="hero-bg-video" id="hero-bg-video" autoplay loop muted playsinline poster="assets/images/facade.jpg" preload="auto">
+        <source src="assets/images/Amara%20Hotal%20Web%20Vertical%20Video.mp4" type="video/mp4" media="(max-width: 768px)">
         <source src="assets/experience.mp4" type="video/mp4">
         <source src="assets/AMARA1-copy(1).mp4" type="video/mp4">
       </video>
+      <script>
+        (function() {
+          var v = document.getElementById('hero-bg-video');
+          if (v && (window.innerWidth <= 768 || (window.matchMedia && window.matchMedia('(max-width: 768px)').matches))) {
+            v.src = 'assets/images/Amara%20Hotal%20Web%20Vertical%20Video.mp4';
+          }
+        })();
+      </script>
       <div class="hero-bg-overlay"></div>
       <div class="hero-bg-gradient-bottom"></div>
     </div>
@@ -323,7 +332,7 @@
         <span class="section-kicker">CINEMATIC SCROLL WALKTHROUGH</span>
         <h2 class="section-title">The Amara Experience</h2>
         <p class="section-lead">
-          Scroll down to explore our luxury boutique spaces frame by frame — from grand façade arrival to private master suites.
+          Scroll down to explore our luxury boutique spaces frame by frame — from grand façade arrival to fine dining.
         </p>
       </div>
     </div>
@@ -347,7 +356,6 @@
             <div class="frame-layer active" data-frame="0" style="background-image: url('assets/images/facade.jpg');"></div>
             <div class="frame-layer" data-frame="1" style="background-image: url('assets/images/compositor.jpg');"></div>
             <div class="frame-layer" data-frame="2" style="background-image: url('assets/images/restaurant.jpg');"></div>
-            <div class="frame-layer" data-frame="3" style="background-image: url('assets/images/bindery_suite.jpg');"></div>
           </div>
           
           <!-- Cinematic Vignette & Lighting Mask -->
@@ -364,7 +372,7 @@
               <span class="counter-label">FRAME</span>
               <span class="counter-current" id="hud-current-frame">01</span>
               <span class="counter-slash">/</span>
-              <span class="counter-total">04</span>
+              <span class="counter-total">03</span>
             </div>
           </div>
 
@@ -404,16 +412,6 @@
               </div>
             </div>
 
-            <!-- Story Card 4 -->
-            <div class="story-card" data-story="3">
-              <div class="story-tag">04 · ROYAL LIVING</div>
-              <h3 class="story-title">Master Suite Splendor</h3>
-              <p class="story-desc">Separate drawing room salon, deep soaking bathtubs, 55" 4K Smart TV, and dedicated concierge care for VIP guests.</p>
-              <div class="story-meta">
-                <span>🛋️ Independent Drawing Salon</span>
-                <span>🛁 Soaking Bathtub</span>
-              </div>
-            </div>
 
           </div>
 
@@ -438,10 +436,7 @@
                 <span class="pill-number">03</span>
                 <span class="pill-title">Amara Restaurant</span>
               </button>
-              <button class="timeline-pill" data-frame-index="3" data-cursor="FRAME 4">
-                <span class="pill-number">04</span>
-                <span class="pill-title">Master Suite</span>
-              </button>
+
             </div>
 
             <div class="experience-scroll-hint">
@@ -482,7 +477,7 @@
         <div class="editorial-card" data-tilt data-cursor="ROOMS">
           <div class="editorial-card-img-wrap">
             <a href="#rooms">
-              <img src="assets/images/compositor.jpg" alt="Deluxe and Suite rooms at Amara Hotel" loading="lazy">
+              <img src="assets/images/luxury_rooms_suites.jpg" alt="Deluxe and Suite rooms at Amara Hotel" loading="lazy">
               <div class="card-glass-hover">
                 <span>View Accommodations →</span>
               </div>
@@ -536,13 +531,13 @@
         
         <!-- Room 1: Standard Room -->
         <article class="room-card" data-category="standard" data-room-id="standard" id="room-standard" data-tilt>
-          <div class="room-image-wrap" data-cursor="STANDARD">
+          <a href="standard-room.html" class="room-image-wrap" data-cursor="STANDARD">
             <img src="assets/images/standard_room.jpg" alt="Standard Room at Amara Hotel Gorakhpur" loading="lazy">
             <span class="room-badge">Classic Comfort</span>
-          </div>
+          </a>
           <div class="room-content">
             <div class="room-header-row">
-              <h3 class="room-name">Standard Room</h3>
+              <h3 class="room-name"><a href="standard-room.html">Standard Room</a></h3>
             </div>
             
             <div class="room-specs">
@@ -563,7 +558,7 @@
             </ul>
 
             <div class="room-card-footer">
-              <button class="btn btn-outline-dark open-room-modal-btn" data-room="standard" data-cursor="DETAILS">View Details</button>
+              <a href="standard-room.html" class="btn btn-outline-dark" data-cursor="DETAILS">View Details</a>
               <button class="btn btn-brand direct-book-btn" data-room="standard" data-cursor="BOOK">Book Now →</button>
             </div>
           </div>
@@ -571,13 +566,13 @@
 
         <!-- Room 2: Delux Room -->
         <article class="room-card" data-category="deluxe" data-room-id="deluxe" id="room-deluxe" data-tilt>
-          <div class="room-image-wrap" data-cursor="DELUX">
-            <img src="assets/images/compositor.jpg" alt="Delux Room at Amara Hotel Gorakhpur" loading="lazy">
+          <a href="deluxe-room.html" class="room-image-wrap" data-cursor="DELUX">
+            <img src="assets/images/deluxe_room.jpg" alt="Delux Room at Amara Hotel Gorakhpur" loading="lazy">
             <span class="room-badge badge-popular">Best Seller</span>
-          </div>
+          </a>
           <div class="room-content">
             <div class="room-header-row">
-              <h3 class="room-name">Delux Room</h3>
+              <h3 class="room-name"><a href="deluxe-room.html">Delux Room</a></h3>
             </div>
             
             <div class="room-specs">
@@ -598,7 +593,7 @@
             </ul>
 
             <div class="room-card-footer">
-              <button class="btn btn-outline-dark open-room-modal-btn" data-room="deluxe" data-cursor="DETAILS">View Details</button>
+              <a href="deluxe-room.html" class="btn btn-outline-dark" data-cursor="DETAILS">View Details</a>
               <button class="btn btn-brand direct-book-btn" data-room="deluxe" data-cursor="BOOK">Book Now →</button>
             </div>
           </div>
@@ -606,13 +601,13 @@
 
         <!-- Room 3: Superior Room -->
         <article class="room-card" data-category="superior" data-room-id="superior" id="room-superior" data-tilt>
-          <div class="room-image-wrap" data-cursor="SUPERIOR">
+          <a href="superior-room.html" class="room-image-wrap" data-cursor="SUPERIOR">
             <img src="assets/images/superior_room.jpg" alt="Superior Room at Amara Hotel" loading="lazy">
             <span class="room-badge badge-featured">Featured</span>
-          </div>
+          </a>
           <div class="room-content">
             <div class="room-header-row">
-              <h3 class="room-name">Superior Room</h3>
+              <h3 class="room-name"><a href="superior-room.html">Superior Room</a></h3>
             </div>
             
             <div class="room-specs">
@@ -633,7 +628,7 @@
             </ul>
 
             <div class="room-card-footer">
-              <button class="btn btn-outline-dark open-room-modal-btn" data-room="superior" data-cursor="DETAILS">View Details</button>
+              <a href="superior-room.html" class="btn btn-outline-dark" data-cursor="DETAILS">View Details</a>
               <button class="btn btn-brand direct-book-btn" data-room="superior" data-cursor="BOOK">Book Now →</button>
             </div>
           </div>
@@ -641,13 +636,13 @@
 
         <!-- Room 4: Club King Bed -->
         <article class="room-card" data-category="clubking" data-room-id="clubking" id="room-clubking" data-tilt>
-          <div class="room-image-wrap" data-cursor="CLUB KING">
+          <a href="club-king-room.html" class="room-image-wrap" data-cursor="CLUB KING">
             <img src="assets/images/club_room.jpg" alt="Club King Bed at Amara Hotel" loading="lazy">
             <span class="room-badge badge-luxury">Club Luxury</span>
-          </div>
+          </a>
           <div class="room-content">
             <div class="room-header-row">
-              <h3 class="room-name">Club King Bed</h3>
+              <h3 class="room-name"><a href="club-king-room.html">Club King Bed</a></h3>
             </div>
             
             <div class="room-specs">
@@ -668,7 +663,7 @@
             </ul>
 
             <div class="room-card-footer">
-              <button class="btn btn-outline-dark open-room-modal-btn" data-room="clubking" data-cursor="DETAILS">View Details</button>
+              <a href="club-king-room.html" class="btn btn-outline-dark" data-cursor="DETAILS">View Details</a>
               <button class="btn btn-brand direct-book-btn" data-room="clubking" data-cursor="BOOK">Book Now →</button>
             </div>
           </div>
@@ -676,13 +671,13 @@
 
         <!-- Room 5: Twin Room -->
         <article class="room-card" data-category="twin" data-room-id="twin" id="room-twin" data-tilt>
-          <div class="room-image-wrap" data-cursor="TWIN">
-            <img src="assets/images/founders_terrace.jpg" alt="Twin Room at Amara Hotel Gorakhpur" loading="lazy">
+          <a href="twin-room.html" class="room-image-wrap" data-cursor="TWIN">
+            <img src="assets/images/twin_room.jpg" alt="Twin Room at Amara Hotel Gorakhpur" loading="lazy">
             <span class="room-badge">Twin Beds</span>
-          </div>
+          </a>
           <div class="room-content">
             <div class="room-header-row">
-              <h3 class="room-name">Twin Room</h3>
+              <h3 class="room-name"><a href="twin-room.html">Twin Room</a></h3>
             </div>
             
             <div class="room-specs">
@@ -703,7 +698,7 @@
             </ul>
 
             <div class="room-card-footer">
-              <button class="btn btn-outline-dark open-room-modal-btn" data-room="twin" data-cursor="DETAILS">View Details</button>
+              <a href="twin-room.html" class="btn btn-outline-dark" data-cursor="DETAILS">View Details</a>
               <button class="btn btn-brand direct-book-btn" data-room="twin" data-cursor="BOOK">Book Now →</button>
             </div>
           </div>
@@ -771,7 +766,7 @@
         </div>
 
         <div class="gallery-item" data-tilt data-cursor="VIEW">
-          <img src="assets/images/compositor.jpg" alt="Deluxe Room" loading="lazy">
+          <img src="assets/images/deluxe_room.jpg" alt="Deluxe Room" loading="lazy">
           <div class="gallery-overlay">
             <span class="gallery-caption">Deluxe Room Interior</span>
           </div>
