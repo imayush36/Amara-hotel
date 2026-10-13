@@ -733,7 +733,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const FRAME_SOURCES = [
       'assets/images/facade.jpg',
-      'assets/images/compositor.jpg',
+      'assets/images/deluxe_room.jpg',
       'assets/images/restaurant.jpg'
     ];
     const totalFrames = FRAME_SOURCES.length;
