@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery | Luxury Boutique Retreat | Hotel Amara Gorakhpur</title>
+  <meta name="description" content="Explore the official photo gallery of Hotel Amara Gorakhpur. View luxury boutique rooms, Delux and Superior suites, royal Amara Restaurant, and modern hotel architecture in Mohaddipur.">
+  <meta name="keywords" content="Hotel Amara Gallery, Hotel Amara Photos, Amara Hotel Gorakhpur Pictures, Luxury Rooms Gorakhpur, Amara Restaurant Images, Mohaddipur Hotel Gallery">
+  <meta name="author" content="Hotel Amara">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Photo Gallery | Hotel Amara Gorakhpur">
+  <meta property="og:description" content="Step inside Hotel Amara Gorakhpur through our official photo gallery. Curated rooms, fine dining, and boutique elegance.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/facade.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Floating WhatsApp Quick Connect Button -->
+  <div class="floating-right-stack" id="floating-right-stack">
+    <a href="https://wa.me/917518884446?text=Hello%20Hotel%20Amara,%20I%20would%20like%20to%20inquire%20about%20room%20availability%20and%20reservations." class="whatsapp-float" id="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-cursor="WHATSAPP">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.771.82 2.791.82 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.485-4.484 9.969-9.969 9.969-1.748 0-3.383-.454-4.81-1.246l-5.221 1.339 1.385-5.074c-.886-1.488-1.393-3.218-1.393-5.064 0-5.485 4.484-9.969 9.969-9.969 5.485 0 9.969 4.484 9.969 9.969zm-4.708 3.518c-.258-.129-1.527-.754-1.764-.84-.236-.086-.408-.129-.58.129-.172.258-.667.84-.817 1.012-.15.172-.3.193-.558.064-.258-.129-1.089-.402-2.074-1.28-.767-.684-1.285-1.529-1.436-1.787-.15-.258-.016-.397.113-.526.116-.115.258-.3.387-.45.129-.151.172-.258.258-.43.086-.172.043-.323-.021-.452-.064-.129-.58-1.398-.795-1.914-.209-.503-.422-.434-.58-.442-.15-.008-.322-.01-.494-.01-.172 0-.451.064-.687.323-.236.258-.902.882-.902 2.15 0 1.269.924 2.495 1.053 2.667.129.172 1.819 2.778 4.407 3.896.616.266 1.097.425 1.472.544.619.197 1.182.169 1.627.103.496-.074 1.527-.624 1.742-1.226.215-.602.215-1.118.151-1.226-.065-.107-.236-.172-.494-.301z"/>
+      </svg>
+      <span class="whatsapp-tooltip">Chat with Concierge</span>
+    </a>
+  </div>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="mobile-drawer-backdrop drawer-backdrop" id="mobile-drawer-backdrop"></div>
+
+  <!-- Mobile Navigation Drawer -->
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="drawer-header-row">
+        <div class="drawer-brand">
+          <img src="assets/images/amara_logo.png" alt="Amara Hotel" class="drawer-brand-logo">
+        </div>
+        <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close menu">✕</button>
+      </div>
+      <div class="drawer-tagline">Experience 4-Star Boutique Elegance</div>
+    </div>
+
+    <div class="drawer-section-label">EXPLORE & STAY</div>
+
+    <ul class="drawer-nav-links drawer-nav-list">
+      <li><a href="index.html#home" class="drawer-nav-link"><span>Home</span><span class="drawer-arrow">›</span></a></li>
+      <li><a href="index.html#experience" class="drawer-nav-link"><span>Experience</span><span class="drawer-arrow">›</span></a></li>
+      <li class="drawer-dropdown-item">
+        <div class="drawer-dropdown-header">
+          <span>Rooms & Suites</span>
+          <span class="drawer-chevron">▾</span>
+        </div>
+        <ul class="drawer-sublinks">
+          <li><a href="standard-room.html">Standard Room</a></li>
+          <li><a href="deluxe-room.html">Delux Room</a></li>
+          <li><a href="superior-room.html">Superior Room</a></li>
+          <li><a href="club-king-room.html">Club King Bed</a></li>
+          <li><a href="twin-room.html">Twin Room</a></li>
+        </ul>
+      </li>
+      <li><a href="restaurant.html" class="drawer-nav-link"><span>Amara Restaurant</span><span class="drawer-arrow">›</span></a></li>
+      <li><a href="gallery.html" class="drawer-nav-link" style="color:var(--brand-primary); font-weight:700;"><span>Gallery</span><span class="drawer-arrow">›</span></a></li>
+      <li><a href="index.html#location" class="drawer-nav-link"><span>Nearby Radar</span><span class="drawer-arrow">›</span></a></li>
+      <li><a href="index.html#about" class="drawer-nav-link"><span>About Hotel</span><span class="drawer-arrow">›</span></a></li>
+      <li><a href="index.html#contact" class="drawer-nav-link"><span>Contact Concierge</span><span class="drawer-arrow">›</span></a></li>
+    </ul>
+
+    <div class="mobile-drawer-footer">
+      <a href="https://wa.me/917518884446?text=Hello%20Hotel%20Amara,%20I%20have%20an%20inquiry%20regarding%20reservations." target="_blank" rel="noopener noreferrer" class="btn btn-brand btn-full mobile-drawer-reserve-btn">
+        <span>Connect on WhatsApp</span>
+        <span>→</span>
+      </a>
+      <div class="mobile-drawer-contacts">
+        <a href="tel:+917518884446" class="drawer-contact-tile">
+          <div class="contact-tile-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <div class="contact-tile-text">
+            <span class="tile-label">Call Concierge</span>
+            <span class="tile-value">+91 7518884446</span>
+          </div>
+        </a>
+        <a href="https://wa.me/917518884446?text=Hello%20Hotel%20Amara,%20I%20would%20like%20to%20inquire%20about%20reservations." target="_blank" rel="noopener noreferrer" class="drawer-contact-tile whatsapp-tile">
+          <div class="contact-tile-icon whatsapp-icon-wrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.771.82 2.791.82 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.485-4.484 9.969-9.969 9.969-1.748 0-3.383-.454-4.81-1.246l-5.221 1.339 1.385-5.074c-.886-1.488-1.393-3.218-1.393-5.064 0-5.485 4.484-9.969 9.969-9.969 5.485 0 9.969 4.484 9.969 9.969zm-4.708 3.518c-.258-.129-1.527-.754-1.764-.84-.236-.086-.408-.129-.58.129-.172.258-.667.84-.817 1.012-.15.172-.3.193-.558.064-.258-.129-1.089-.402-2.074-1.28-.767-.684-1.285-1.529-1.436-1.787-.15-.258-.016-.397.113-.526.116-.115.258-.3.387-.45.129-.151.172-.258.258-.43.086-.172.043-.323-.021-.452-.064-.129-.58-1.398-.795-1.914-.209-.503-.422-.434-.58-.442-.15-.008-.322-.01-.494-.01-.172 0-.451.064-.687.323-.236.258-.902.882-.902 2.15 0 1.269.924 2.495 1.053 2.667.129.172 1.819 2.778 4.407 3.896.616.266 1.097.425 1.472.544.619.197 1.182.169 1.627.103.496-.074 1.527-.624 1.742-1.226.215-.602.215-1.118.151-1.226-.065-.107-.236-.172-.494-.301z"/></svg>
+          </div>
+          <div class="contact-tile-text">
+            <span class="tile-label">WhatsApp Concierge</span>
+            <span class="tile-value">Chat Directly</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Site Header -->
+  <header class="site-header" id="site-header">
+    <nav class="main-navbar" id="main-navbar">
+      <div class="container nav-container">
+        <a href="index.html#home" class="navbar-brand">
+          <img src="assets/images/amara_logo.png" alt="Amara Hotel - Luxury Retreat" class="navbar-brand-logo">
+        </a>
+
+        <div class="desktop-nav-menu">
+          <ul class="nav-links">
+            <li><a href="index.html#home" class="nav-link">Home</a></li>
+            <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+            <li class="has-dropdown">
+              <a href="index.html#rooms" class="nav-link">Rooms ▾</a>
+              <ul class="nav-dropdown">
+                <li><a href="standard-room.html">Standard Room</a></li>
+                <li><a href="deluxe-room.html">Delux Room</a></li>
+                <li><a href="superior-room.html">Superior Room</a></li>
+                <li><a href="club-king-room.html">Club King Bed</a></li>
+                <li><a href="twin-room.html">Twin Room</a></li>
+              </ul>
+            </li>
+            <li><a href="restaurant.html" class="nav-link">Amara Restaurant</a></li>
+            <li><a href="gallery.html" class="nav-link" style="color:var(--brand-primary); font-weight:700;">Gallery</a></li>
+            <li><a href="index.html#location" class="nav-link">Nearby</a></li>
+            <li><a href="index.html#about" class="nav-link">About</a></li>
+            <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-actions">
+          <a href="https://wa.me/917518884446?text=Hello%20Hotel%20Amara,%20I%20would%20like%20to%20reserve%20a%20stay." target="_blank" rel="noopener noreferrer" class="btn btn-brand nav-reserve-btn">
+            <span>Reserve A Stay</span>
+            <span>→</span>
+          </a>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open Navigation Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="gallery-page-hero" style="background-image: url('assets/images/facade.jpg');">
+    <div class="container">
+      <div class="room-hero-content">
+        <nav class="room-breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="room-breadcrumb-sep">/</span>
+          <span>Visual Showcase</span>
+          <span class="room-breadcrumb-sep">/</span>
+          <span>Photo Gallery</span>
+        </nav>
+
+        <span class="room-badge-tag" style="background: var(--brand-gold-deep);">Visual Showcase · 4-Star Boutique Retreat</span>
+        <h1 class="room-page-title">The Amara Visual Gallery</h1>
+
+        <p style="color: var(--text-secondary); max-width: 650px; font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem;">
+          Immerse yourself in our architectural elegance, meticulously styled boutique guest rooms, royal multi-cuisine dining hall, and warm bespoke hospitality.
+        </p>
+
+        <div class="room-hero-pills">
+          <span class="room-hero-pill">✨ 17 Curated Frames</span>
+          <span class="room-hero-pill">🛏️ 5 Luxury Room Categories</span>
+          <span class="room-hero-pill">🍽️ Royal Amara Dining</span>
+          <span class="room-hero-pill">📍 Mohaddipur, Gorakhpur</span>
+          <span class="room-hero-pill">🛎️ 24/7 Concierge Care</span>
+        </div>
+
+        <div class="room-hero-actions">
+          <a href="#gallery-showcase" class="btn btn-brand btn-lg">
+            <span>Explore Visual Grid</span>
+            <span>↓</span>
+          </a>
+          <a href="https://wa.me/917518884446?text=Hello%20Hotel%20Amara,%20I%20have%20an%20inquiry%20regarding%20reservations." target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg">
+            <span>Inquire on WhatsApp</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY STATS STRIP -->
+  <section class="gallery-stats-strip">
+    <div class="container">
+      <div class="gallery-stats-grid">
+        <div class="gallery-stat-item">
+          <div class="gallery-stat-num">17+</div>
+          <div class="gallery-stat-label">Curated Visual Frames</div>
+        </div>
+        <div class="gallery-stat-item">
+          <div class="gallery-stat-num">5 Tiers</div>
+          <div class="gallery-stat-label">Luxury Rooms & Suites</div>
+        </div>
+        <div class="gallery-stat-item">
+          <div class="gallery-stat-num">4-Star</div>
+          <div class="gallery-stat-label">Boutique Hospitality</div>
+        </div>
+        <div class="gallery-stat-item">
+          <div class="gallery-stat-num">24/7</div>
+          <div class="gallery-stat-label">Concierge & Dining Service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE GRID SECTION WITH FILTER PILLS -->
+  <section class="gallery-showcase-section" id="gallery-showcase">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-kicker">CURATED PERSPECTIVES</span>
+        <h2 class="section-title">Step Inside Hotel Amara</h2>
+        <p class="section-lead">
+          Filter through our luxury accommodations, fine dining culinary experiences, and signature architectural spaces. Click any photo for a full high-resolution interactive view.
+        </p>
+
+        <!-- Category Filter Pills -->
+        <div class="gallery-filter-wrap">
+          <button class="gallery-filter-btn active" data-filter="all">
+            <span>All Showcase</span>
+            <span class="filter-count">17</span>
+          </button>
+          <button class="gallery-filter-btn" data-filter="rooms">
+            <span>Rooms & Suites</span>
+            <span class="filter-count">6</span>
+          </button>
+          <button class="gallery-filter-btn" data-filter="dining">
+            <span>Dining & Restaurant</span>
+            <span class="filter-count">7</span>
+          </button>
+          <button class="gallery-filter-btn" data-filter="hotel">
+            <span>Hotel & Architecture</span>
+            <span class="filter-count">4</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-showcase-grid" id="gallery-showcase-grid">
+
+        <!-- ITEM 1: Deluxe Room (Rooms) -->
+        <div class="gallery-card" data-category="rooms">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/deluxe_room.jpg" alt="Delux Room Interior" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Rooms & Suites</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Delux Room</h3>
+              <p class="gallery-card-desc">Plush queen bed, ergonomic executive workstation, smart ambient lighting, and bespoke bath amenities.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 2: Amara Restaurant Grand Dining (Dining) -->
+        <div class="gallery-card" data-category="dining">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/amara_restaurant.jpg" alt="Amara Restaurant Grand Dining" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Fine Dining</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Amara Restaurant Grand Dining</h3>
+              <p class="gallery-card-desc">World-class multi-cuisine hall serving authentic Awadhi, North Indian, and Indo-Chinese culinary master recipes.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 3: Grand Hotel Façade (Hotel) -->
+        <div class="gallery-card" data-category="hotel">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/facade.jpg" alt="Grand Hotel Façade & Entrance" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Architecture</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Grand Hotel Façade & Entrance</h3>
+              <p class="gallery-card-desc">Majestic illuminated architectural presence standing prominently beside Khetan Petrol Pump, Mohaddipur.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 4: Superior Room (Rooms) -->
+        <div class="gallery-card" data-category="rooms">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/superior_room.jpg" alt="Superior Room King Master Bed" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Rooms & Suites</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Superior Room</h3>
+              <p class="gallery-card-desc">380 sq. ft. elevated comfort featuring plush king bedding, expansive city outlook, and rainfall shower.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 5: Intimate Table Setting (Dining) -->
+        <div class="gallery-card" data-category="dining">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/restaurant.jpg" alt="Intimate Dining Ambience" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Fine Dining</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Intimate Table Setting</h3>
+              <p class="gallery-card-desc">Candlelit elegance, plush velvet seating, and courteous tableside hospitality for memorable family meals.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 6: Club King Bed (Rooms) -->
+        <div class="gallery-card" data-category="rooms">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/club_room.jpg" alt="Club King Bed Suite" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Rooms & Suites</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Club King Bed</h3>
+              <p class="gallery-card-desc">Executive retreat boasting velvet armchairs, VIP priority concierge care, and soundproof tranquility.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 7: Grand Reception & Concierge (Hotel) -->
+        <div class="gallery-card" data-category="hotel">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/reception.jpg" alt="Grand Reception & Concierge" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Architecture</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Grand Reception & Concierge</h3>
+              <p class="gallery-card-desc">Warm welcoming arrival desk, marble detailing, and round-the-clock concierge team awaiting your check-in.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 8: Restaurant Hall (Dining) -->
+        <div class="gallery-card" data-category="dining">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/restaurant_hall.jpg" alt="Amara Restaurant Banquet Hall" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Fine Dining</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Banquet & Dining Hall</h3>
+              <p class="gallery-card-desc">Expansive air-conditioned dining interior designed for celebratory gatherings, family dinners, and social events.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 9: Standard Room (Rooms) -->
+        <div class="gallery-card" data-category="rooms">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/standard_room.jpg" alt="Standard Room Modern Comfort" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Rooms & Suites</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Standard Room</h3>
+              <p class="gallery-card-desc">Ergonomically crafted boutique room offering supreme mattress comfort, smart workspace, and high-speed Wi-Fi.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 10: Signature Charcoal Kebab Platter (Dining) -->
+        <div class="gallery-card" data-category="dining">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/menu_kebab_platter.jpg" alt="Signature Charcoal Kebab Platter" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Culinary Art</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Signature Charcoal Kebab Platter</h3>
+              <p class="gallery-card-desc">Succulent marinated paneer and kebabs grilled over open charcoal embers with mint relish and spiced onions.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 11: Courtyard & Open Air Spaces (Hotel) -->
+        <div class="gallery-card" data-category="hotel">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/courtyard.jpg" alt="Hotel Courtyard Enclave" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Architecture</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Courtyard & Open Air Spaces</h3>
+              <p class="gallery-card-desc">Peaceful inner courtyard enclave providing fresh open air and quiet moments amidst the bustling city of Gorakhpur.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 12: Twin Room (Rooms) -->
+        <div class="gallery-card" data-category="rooms">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/twin_room.jpg" alt="Twin Bed Room" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Rooms & Suites</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Twin Room</h3>
+              <p class="gallery-card-desc">Versatile twin single bed arrangement tailor-made for corporate delegates, friends, and family travelers.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 13: Awadhi Handi & Clay Tandoor (Dining) -->
+        <div class="gallery-card" data-category="dining">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/menu_curry_naan.jpg" alt="Awadhi Handi Curry & Garlic Naan" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Culinary Art</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Awadhi Handi & Clay Tandoor</h3>
+              <p class="gallery-card-desc">Slow-cooked gravies simmered with fragrant whole spices, paired with smoky clay-oven baked butter naans.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 14: Founders Terrace Lounge (Hotel) -->
+        <div class="gallery-card" data-category="hotel">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/founders_terrace.jpg" alt="Founders Terrace Lounge" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Architecture</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Founders Terrace Lounge</h3>
+              <p class="gallery-card-desc">Breezy elevated terrace corner offering quiet open-sky vantage points and evening unwind relaxation.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 15: Gourmet Morning Breakfast (Dining) -->
+        <div class="gallery-card" data-category="dining">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/breakfast_spread.jpg" alt="Gourmet Morning Breakfast Spread" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Fine Dining</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Gourmet Morning Breakfast Spread</h3>
+              <p class="gallery-card-desc">Freshly prepared morning breakfast buffets, seasonal fruits, aromatic South Indian filter coffees, and hot savories.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 16: Boutique Suite Ambiance (Rooms) -->
+        <div class="gallery-card" data-category="rooms">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/luxury_rooms_suites.jpg" alt="Boutique Suite Ambiance" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Rooms & Suites</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Boutique Suite Ambiance</h3>
+              <p class="gallery-card-desc">Subtle golden warm lighting, artisan textiles, and minimalist modern luxury crafted for deep restorative rest.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM 17: Master Confections & Desserts (Dining) -->
+        <div class="gallery-card" data-category="dining">
+          <div class="gallery-card-thumb">
+            <img src="assets/images/menu_royal_dessert.jpg" alt="Artisan Royal Desserts" loading="lazy">
+            <div class="gallery-card-topbar">
+              <span class="gallery-card-badge">Culinary Art</span>
+              <div class="gallery-zoom-icon" title="Enlarge photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-card-body">
+            <div>
+              <h3 class="gallery-card-title">Master Confections & Royal Desserts</h3>
+              <p class="gallery-card-desc">Handcrafted traditional Indian sweets, rich rabri, and fine puddings presented with artisanal culinary finesse.</p>
+            </div>
+            <div class="gallery-card-footer">
+              <span>Click to view full frame</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE LIGHTBOX MODAL -->
+  <div class="gallery-lightbox-modal" id="gallery-lightbox-modal" role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+    <div class="lightbox-dialog">
+      <!-- Close Button -->
+      <button class="lightbox-btn-close" id="lightbox-btn-close" aria-label="Close photo view">✕</button>
+
+      <!-- Prev / Next Navigation -->
+      <button class="lightbox-nav-btn lightbox-btn-prev" id="lightbox-btn-prev" aria-label="Previous photo">‹</button>
+      <button class="lightbox-nav-btn lightbox-btn-next" id="lightbox-btn-next" aria-label="Next photo">›</button>
+
+      <!-- Main Image View -->
+      <div class="lightbox-image-box">
+        <img src="" alt="" id="lightbox-img">
+      </div>
+
+      <!-- Bottom Meta Bar -->
+      <div class="lightbox-meta-bar">
+        <div class="lightbox-title-area">
+          <span class="lightbox-photo-category" id="lightbox-photo-category">Category</span>
+          <h4 class="lightbox-photo-title" id="lightbox-photo-title">Title</h4>
+        </div>
+        <div class="lightbox-ctrl-right">
+          <span class="lightbox-counter-badge" id="lightbox-counter-badge">1 / 17</span>
+          <a href="#" class="lightbox-whatsapp-inquire" id="lightbox-whatsapp-inquire" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.771.82 2.791.82 3.18 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.485-4.484 9.969-9.969 9.969-1.748 0-3.383-.454-4.81-1.246l-5.221 1.339 1.385-5.074c-.886-1.488-1.393-3.218-1.393-5.064 0-5.485 4.484-9.969 9.969-9.969 5.485 0 9.969 4.484 9.969 9.969zm-4.708 3.518c-.258-.129-1.527-.754-1.764-.84-.236-.086-.408-.129-.58.129-.172.258-.667.84-.817 1.012-.15.172-.3.193-.558.064-.258-.129-1.089-.402-2.074-1.28-.767-.684-1.285-1.529-1.436-1.787-.15-.258-.016-.397.113-.526.116-.115.258-.3.387-.45.129-.151.172-.258.258-.43.086-.172.043-.323-.021-.452-.064-.129-.58-1.398-.795-1.914-.209-.503-.422-.434-.58-.442-.15-.008-.322-.01-.494-.01-.172 0-.451.064-.687.323-.236.258-.902.882-.902 2.15 0 1.269.924 2.495 1.053 2.667.129.172 1.819 2.778 4.407 3.896.616.266 1.097.425 1.472.544.619.197 1.182.169 1.627.103.496-.074 1.527-.624 1.742-1.226.215-.602.215-1.118.151-1.226-.065-.107-.236-.172-.494-.301z"/></svg>
+            <span>Inquire About This Space</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCOVER ROOMS & DINING CTA STRIP -->
+  <section class="related-rooms-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-kicker">STAY & DINE</span>
+        <h2 class="section-title">Experience The Real Amara</h2>
+        <p class="section-lead">Ready to immerse yourself in boutique comfort? Explore our rooms or visit Amara Restaurant.</p>
+      </div>
+
+      <div class="related-rooms-grid">
+        <!-- Room 1: Deluxe Room -->
+        <a href="deluxe-room.html" class="related-room-card">
+          <div class="related-room-thumb">
+            <img src="assets/images/deluxe_room.jpg" alt="Delux Room" loading="lazy">
+            <span class="related-room-badge">Best Seller</span>
+          </div>
+          <div class="related-room-body">
+            <h3 class="related-room-title">Delux Room</h3>
+            <p class="related-room-sub">Plush queen bed, work desk, smart TV, rainfall shower and modern care.</p>
+            <div class="related-room-footer">
+              <span>View Details</span>
+              <span>→</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Room 2: Superior Room -->
+        <a href="superior-room.html" class="related-room-card">
+          <div class="related-room-thumb">
+            <img src="assets/images/superior_room.jpg" alt="Superior Room" loading="lazy">
+            <span class="related-room-badge">City View</span>
+          </div>
+          <div class="related-room-body">
+            <h3 class="related-room-title">Superior Room</h3>
+            <p class="related-room-sub">380 sq. ft. elevated luxury with grand king bed and panoramic city views.</p>
+            <div class="related-room-footer">
+              <span>View Details</span>
+              <span>→</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Dining 3: Amara Restaurant -->
+        <a href="restaurant.html" class="related-room-card">
+          <div class="related-room-thumb">
+            <img src="assets/images/amara_restaurant.jpg" alt="Amara Restaurant" loading="lazy">
+            <span class="related-room-badge">Fine Dining</span>
+          </div>
+          <div class="related-room-body">
+            <h3 class="related-room-title">Amara Restaurant</h3>
+            <p class="related-room-sub">Authentic Awadhi recipes, tandoor specials, family hall, and master chefs.</p>
+            <div class="related-room-footer">
+              <span>Explore Restaurant</span>
+              <span>→</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING BACK TO TOP BUTTON -->
+  <button class="floating-top-btn" id="floating-top-btn" aria-label="Scroll to top" title="Scroll to top">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+    <span>TOP</span>
+  </button>
+
+  <!-- LUXURY FOOTER -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <div class="footer-col-main">
+          <img src="assets/images/amara_logo.png" alt="Amara Hotel Logo" class="footer-brand-logo">
+          <p class="footer-brand-title">Hotel Amara ★★★★</p>
+          <p>Premier Boutique Hotel & Amara Restaurant</p>
+          <p>House No. 98 B, Beside Khetan Petrol Pump</p>
+          <p>Mohaddipur, Gorakhpur, Uttar Pradesh 273008</p>
+        </div>
+
+        <div class="footer-col-contact">
+          <p><a href="tel:+917518884446" class="footer-link-bold">📞 +91 7518884446</a></p>
+          <p><a href="mailto:hotelamaragkp@gmail.com" class="footer-link-bold">✉️ hotelamaragkp@gmail.com</a></p>
+          <div class="footer-social-wrap mt-3">
+            <a href="https://www.instagram.com/amarahotelgkp?xtok=ZW55eTVha28zcGto" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+            <a href="https://wa.me/917518884446?text=Hello%20Hotel%20Amara" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="footer-col-links">
+          <a href="index.html#home" class="footer-legal-link">Home</a>
+          <a href="index.html#rooms" class="footer-legal-link">Rooms & Suites</a>
+          <a href="restaurant.html" class="footer-legal-link">Amara Restaurant</a>
+          <a href="gallery.html" class="footer-legal-link" style="color:var(--brand-primary); font-weight:700;">Gallery</a>
+          <a href="index.html#contact" class="footer-legal-link">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom-line" style="display:flex; align-items:center; justify-content:space-between; background: rgba(0,0,0,0.35); padding: 0.85rem clamp(1.5rem, 3.5vw, 3.5rem);">
+      <p style="color:#7a6f63; font-size:0.82rem; margin:0;">© Copyrights Hotel Amara.</p>
+      <p style="color:#7a6f63; font-size:0.82rem; margin:0;">Developed by <a href="https://www.shineinfosolutions.in/" target="_blank" rel="noopener noreferrer" style="color: var(--brand-gold); text-decoration: none;">shine infosolution</a></p>
+    </div>
+  </footer>
+
+  <!-- Dedicated Gallery Script -->
+  <script src="js/gallery.js"></script>
+</body>
+</html>
